@@ -5,7 +5,7 @@ Project 3: Aleena Madni
 <br>
 ## Description:
 A cooking blog built by React.js and using Firebase as a backend!
-The user can add/edit recipes by making an ingredients list and have step by step directions. Recipes can also be deleted if they aren't used as much as the other recipes. 
+The user can add/edit recipes by making an ingredients list and have step by step directions. Recipes can also be deleted if they aren't used as much as the other recipes.
 ## WireFrame:
 ![img](./Images/CookinWire.png)
 <br>
