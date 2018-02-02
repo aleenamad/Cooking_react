@@ -14,7 +14,7 @@ class Recipe extends Component{
   }
     render(props){
       return(
-        <div className= "recipe fade-in">
+        <div className= "recipe fade-In">
           <p className= "recipeContent">{ this.recipeContent }</p>
         </div>
       )

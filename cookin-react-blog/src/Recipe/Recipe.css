@@ -1,0 +1,13 @@
+.recipe{
+  font-family: 'Abril Fatface', cursive;
+}
+
+
+@keyframes fadeIn { from { opacity: 0; } to { opacit: 0.8; } }
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn ease-in 1;
+  animation-fill-mode: forwards;
+  animation-duration: 0.1s;
+}
