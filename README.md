@@ -10,6 +10,9 @@ A cooking blog built by react and using firebase as a backend!
 The user can add/edit recipes, delete it,  
 ## WireFrame:
 ![img](./Images/CookinWire.png)
+<br>
+A more detailed Wire Frame: 
+![img](./Images/CookinMoreWire.jpeg)
 
 ## Database ERD (Entity Relationship Diagram):
 
