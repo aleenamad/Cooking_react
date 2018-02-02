@@ -1,2 +1,12 @@
-# Cooking_react
-Project 3 Ga
+# Cooking React
+Project 3: Aleena Madni
+Some inspiring words by Drake:
+"Been cookin' with the sauce, chef, curry with the pot, boy, 360 with the wrist boy"
+
+## Description:
+
+## WireFrame:
+
+## Database ERD (Entity Relationship Diagram):
+
+## Trello:
