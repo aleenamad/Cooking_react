@@ -5,6 +5,19 @@ import Recipe from './Recipe/Recipe';
 
 
 class App extends Component {
+
+
+  constructor(props){
+    super(props);
+// setup react state of our Component
+    this.state={
+      recipe: [
+        { id: 1, recipeContent: "Fettucine Alfredo"},
+        { id: 2, recipeContent: "Grilled Chicken"},
+
+      ],
+    }
+  }
   render() {
     return (
       <div className="App">
@@ -14,7 +27,13 @@ class App extends Component {
         </header>
         <p className="App-intro">
           <h1>Recipes:</h1>
-          <Recipe />
+          {
+            this.state.recipe.map((recipe) => {
+              return(
+              <Recipe recipeContent={ recipe.recipeContent } recipeId={ recipe.recipeId } key={ recipe.id }/>
+                )
+            })
+          }
 
         </p>
       </div>

@@ -8,19 +8,25 @@ class Recipe extends Component{
 
   constructor(props){
     super(props);
-    this.message = "Yo what up from recipe component"
+    this.recipeContent = props.recipeContent;
+    this.recipeId = props.recipeId;
+
   }
     render(props){
       return(
-        <div>
-          <h1>{this.message}</h1>
+        <div className= "recipe fade-in">
+          <p className= "recipeContent">{ this.recipeContent }</p>
         </div>
       )
     }
 
+}
 
 
+Recipe.propTypes = {
+  recipeContent: PropTypes.string
 
 }
+
 
 export default Recipe;
