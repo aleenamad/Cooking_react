@@ -18,4 +18,5 @@ A more detailed Wire Frame:
 
 ## Trello:
 Trello contains to-do's and User Stories for MVP.
+<br>
 [Trello](https://trello.com/invite/b/dU2MXJQd/d6141a3a221cead35d45271eaecdea12/cookin-react)
