@@ -10,6 +10,7 @@ class App extends Component {
 
   constructor(props){
     super(props);
+    this.addIngredients = this.addIngredients.bind(this);
 // setup react state of our Component
     this.state={
       recipe: [
@@ -19,6 +20,19 @@ class App extends Component {
       ],
     }
   }
+
+addIngredients(ingredients){
+const previousIngredients = this.state.recipe; previousIngredients.push({ id: previousIngredients.length +1 , recipeContent: ingredients });
+this.setState({
+  ingredients: previousIngredients
+})
+
+}
+
+
+
+
+
   render() {
     return (
 
@@ -66,7 +80,7 @@ class App extends Component {
 <br/>
         <div className= "formIngredients">
 
-          <Ingredients />
+          <Ingredients addIngredients={ this.addIngredients }/>
 
         </div>
 
