@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Recipe from './Recipe/Recipe';
-import Ingredients from './Recipe-Form/Ingredients'
+import Ingredients from './Recipe-Form/Ingredients';
+import { Switch, Route } from 'react-router-dom';
 
 
 class App extends Component {
@@ -36,6 +37,8 @@ this.setState({
   render() {
     return (
 
+
+
       <div className="App">
 
         <header className="App-header">
@@ -47,18 +50,18 @@ this.setState({
 
             <ul className="nav justify-content-center nav-fill bg-faded text-white">
               <li className="nav-item">
-                <a className="nav-link active" href="#">Recipes</a>
+                <a className="nav-link active" href="/">Recipes</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="#">Create a Recipe</a>
+                  <a className="nav-link" href="/Create">Create a Recipe</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link" href="#">About Me</a>
                 </li>
 
-                <form class="form-inline">
-                  <input class="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search"></input>
-                  <button class="btn btn-outline-primary my-2 my-sm-0"  type="submit">Search</button>
+                <form className="form-inline">
+                  <input className="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search"></input>
+                  <button className="btn btn-outline-primary my-2 my-sm-0"  type="submit">Search</button>
                 </form>
 
 
@@ -83,6 +86,13 @@ this.setState({
           <Ingredients addIngredients={ this.addIngredients }/>
 
         </div>
+        <div className="Routes">
+         <Switch>
+           <Route exact path='/' component={ Recipe }/>
+           <Route path='/Create' component={ Ingredients }/>
+         </Switch>
+       </div>
+
 
 
 
