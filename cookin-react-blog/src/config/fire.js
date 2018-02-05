@@ -1,0 +1,12 @@
+import firebase from 'firebase';
+import key from './key.js';
+
+// Initialize Firebase
+  var config = {
+    apiKey: key,
+    authDomain: "cookin-ce612.firebaseapp.com",
+    databaseURL: "https://cookin-ce612.firebaseio.com",
+    projectId: "cookin-ce612",
+    storageBucket: "cookin-ce612.appspot.com",
+    messagingSenderId: "392669375838"
+  };
