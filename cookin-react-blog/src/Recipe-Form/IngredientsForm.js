@@ -3,79 +3,82 @@ import React, { Component } from 'react';
 import Recipe from '../Recipe/Recipe';
 import Ingredients from './Ingredients';
 // import MyRoutes from './config/routes';
-import Home from '../Static/home';
+// import Home from '../Static/home';
+import { fire_config } from '../config/fire';
+import firebase from 'firebase/app';
+import 'firebase/database';
+
+
+
+
 
 class App extends Component {
-
 
   constructor(props){
     super(props);
     this.addIngredients = this.addIngredients.bind(this);
+    this.removeIngredients = this.removeIngredients.bind(this);
+
+    this.app = firebase.initializeApp(fire_config);
+    this.database = this.app.database().ref().child('recipe');
+
+
 // setup react state of our Component
     this.state={
-      recipe: [
-        { id: 1, recipeContent: "Fettucine Alfredo"},
-        { id: 2, recipeContent: "Grilled Chicken"},
-
-      ],
+      recipes: [],
     }
   }
 
-addIngredients(ingredients){
-const previousIngredients = this.state.recipe; previousIngredients.push({ id: previousIngredients.length +1 , recipeContent: ingredients });
-this.setState({
-  ingredients: previousIngredients
+
+componentWillMount(){
+
+const previousIngredients = this.state.recipes;
+
+//data snapshot
+this.database.on('child_added', snap => {
+  previousIngredients.push({
+    id: snap.key,
+    recipeContent: snap.val().recipeContent,
+  })
+  this.setState({
+    recipes: previousIngredients
+  })
 })
+this.database.on('child_removed', snap => {
+  for(var i=0; i < previousIngredients.length; i++){
+    if(previousIngredients[i].id === snap.key){
+      previousIngredients.splice(i, 1);
+    }
+  }
+  this.setState({
+    recipes: previousIngredients
+  })
+})
+
+}
+addIngredients(recipe){
+this.database.push().set({ recipeContent: recipe });
 
 }
 
 
-
-
-
+removeIngredients(recipeId){
+console.log("from the parent: " + recipeId);
+  this.database.child(recipeId).remove();
+}
   render() {
     return (
 
-
-
       <div className="App">
 
-        <header className="App-header">
-          <h1 className="App-title">Cookin with Gonads</h1>
-
-        </header>
-
-        <div className="Navbar">
-
-            <ul className="nav justify-content-center nav-fill bg-faded text-white">
-              <li className="nav-item">
-                <a className="nav-link active" href="/">Home</a>
-                </li>
-              <li className="nav-item">
-                <a className="nav-link active" href="/">Recipes</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/Create">Create a Recipe</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">About Me</a>
-                </li>
-
-                <form className="form-inline">
-                  <input className="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search"></input>
-                  <button className="btn btn-outline-primary my-2 my-sm-0"  type="submit">Search</button>
-                </form>
-
-
-              </ul>
-              </div>
-
       <div className= "App-intro">
-          <h1>Recipes:</h1>
+          <h1>Ingredients:</h1>
           {
-            this.state.recipe.map((recipe) => {
+            this.state.recipes.map((recipes) => {
               return(
-              <Recipe recipeContent={ recipe.recipeContent } recipeId={ recipe.recipeId } key={ recipe.id }/>
+              <Recipe recipeContent={ recipes.recipeContent }    recipeId={ recipes.id }
+              key={ recipes.id }
+              removeIngredients ={ this.removeIngredients }/>
                 )
             })
           }
@@ -88,10 +91,6 @@ this.setState({
           <Ingredients addIngredients={ this.addIngredients }/>
 
         </div>
-
-
-
-
 
     </div>
     );

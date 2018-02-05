@@ -10,12 +10,26 @@ class Recipe extends Component{
     super(props);
     this.recipeContent = props.recipeContent;
     this.recipeId = props.recipeId;
+    this.handleRemoveIngredient = this.handleRemoveIngredient.bind(this);
 
   }
-    render(props){
+
+  handleRemoveIngredient(id){
+    this.props.removeIngredients(id);
+  }
+
+
+
+    render(){
       return(
         <div className= "recipe fade-In">
+          <div className= "container">
+          <span className="closebtn"
+            onClick={() => this.handleRemoveIngredient(this.recipeId)}>
+            X
+          </span>
           <p className= "recipeContent">{ this.recipeContent }</p>
+        </div>
         </div>
       )
     }

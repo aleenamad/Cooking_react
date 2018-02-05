@@ -11,3 +11,13 @@
   animation-fill-mode: forwards;
   animation-duration: 0.1s;
 }
+.container{
+/* justify-content: center; */
+flex-wrap: nowrap;
+
+}
+.closebtn {
+  color: red;
+  justify-content: center;
+
+}

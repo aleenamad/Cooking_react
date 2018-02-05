@@ -1,8 +1,8 @@
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import key from './key.js';
 
 // Initialize Firebase
-  var config = {
+  export const fire_config = {
     apiKey: key,
     authDomain: "cookin-ce612.firebaseapp.com",
     databaseURL: "https://cookin-ce612.firebaseio.com",

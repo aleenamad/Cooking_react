@@ -35,7 +35,9 @@ writeIngredients(){
       return(
         <div className="formWrapper">
 
-          <input className="ingredientInput" placeholder="Write ingredients here..." value={ this.state.newIngredientsContent } onChange= { this.handleUserInput }/>
+          <input className="ingredientInput" placeholder="Write ingredients here..."
+            value={ this.state.newIngredientsContent } 
+            onChange= { this.handleUserInput }/>
           <button className="ingredientsButton" onClick={ this.writeIngredients }>Add Ingredients</button>
 
 
