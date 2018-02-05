@@ -26,24 +26,27 @@ writeIngredients(){
 
   // set newIngredientsContent back to empty after enter
   this.setState({
-    newIngredientsContent: '',
+    newRecipeTite:'',
+    newIngredientsContent: ''
   })
 
 }
 
     render(){
       return(
+        <div className="container">
         <div className="formWrapper">
-
-          <input className="ingredientInput" placeholder="Write ingredients here..."
-            value={ this.state.newIngredientsContent } 
+          <input className='recipeTitle' placeholder='Title of Recipe...' value={ this.state.newRecipeTite } onChange= {this.handleUserInput}/>
+          <input className="ingredientInput" placeholder="Write ingredients here (separate by comma)"
+            value={ this.state.newIngredientsContent }
             onChange= { this.handleUserInput }/>
+
           <button className="ingredientsButton" onClick={ this.writeIngredients }>Add Ingredients</button>
 
 
 
         </div>
-
+</div>
       )
     }
 

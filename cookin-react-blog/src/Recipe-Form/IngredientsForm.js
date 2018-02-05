@@ -55,6 +55,8 @@ this.database.on('child_removed', snap => {
   })
 })
 
+
+
 }
 addIngredients(recipe){
 this.database.push().set({ recipeContent: recipe });
@@ -66,6 +68,11 @@ removeIngredients(recipeId){
 console.log("from the parent: " + recipeId);
   this.database.child(recipeId).remove();
 }
+
+
+// updateIngredients(recipeId){
+//   this.database.child(recipeId).update();
+// }
   render() {
     return (
 
