@@ -9,24 +9,33 @@ class Ingredients extends Component{
     super(props);
     this.state = {
       newIngredientsContent: '',
+      newRecipeTitle:'',
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.writeIngredients = this.writeIngredients.bind(this);
-
+    this.handleTitleInput = this.handleTitleInput.bind(this);
   }
 handleUserInput(e){
   this.setState({
     newIngredientsContent: e.target.value //vlaue of text input
+
+  })
+}
+
+handleTitleInput(e){
+  this.setState({
+    newRecipeTitle: e.target.value
   })
 }
 writeIngredients(){
   //call a method that sets the recipeContent
-  this.props.addIngredients(this.state.newIngredientsContent)
+  this.props.addIngredients(this.state.newIngredientsContent);
+  this.props.addTitle(this.state.newRecipeTitle);
 
 
   // set newIngredientsContent back to empty after enter
   this.setState({
-    newRecipeTite:'',
+    newRecipeTitle:'',
     newIngredientsContent: ''
   })
 
@@ -36,13 +45,20 @@ writeIngredients(){
       return(
         <div className="container">
         <div className="formWrapper">
-          <input className='recipeTitle' placeholder='Title of Recipe...' value={ this.state.newRecipeTite } onChange= {this.handleUserInput}/>
-          <input className="ingredientInput" placeholder="Write ingredients here (separate by comma)"
+          <form>
+          <label>Title of Recipe:</label>
+        <br/>
+          <input className='recipeTitle' placeholder='Title of Recipe...' value={ this.state.newRecipeTitle } onChange= { this.handleTitleInput }/>
+        <br/>
+        <br/>
+          <label>Ingredients (Separate By Comma):</label>
+          <br/>
+          <input className="ingredientInput" placeholder="Write ingredients here..."
             value={ this.state.newIngredientsContent }
             onChange= { this.handleUserInput }/>
 
-          <button className="ingredientsButton" onClick={ this.writeIngredients }>Add Ingredients</button>
-
+          <button className="ingredientsButton" onClick={ this.writeIngredients } class="btn btn-success">Add Recipe!</button>
+</form>
 
 
         </div>

@@ -9,6 +9,7 @@ class Recipe extends Component{
   constructor(props){
     super(props);
     this.recipeContent = props.recipeContent;
+
     this.recipeId = props.recipeId;
     this.handleRemoveIngredient = this.handleRemoveIngredient.bind(this);
 
@@ -38,7 +39,7 @@ class Recipe extends Component{
 
 
 Recipe.propTypes = {
-  recipeContent: PropTypes.string
+  recipeContent: PropTypes.string,
 
 }
 

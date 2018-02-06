@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 // import './App.css';
 import Recipe from '../Recipe/Recipe';
 import Ingredients from './Ingredients';
+import Title from './title';
+
 // import MyRoutes from './config/routes';
 // import Home from '../Static/home';
 import { fire_config } from '../config/fire';
@@ -26,6 +28,7 @@ class App extends Component {
 // setup react state of our Component
     this.state={
       recipes: [],
+      title: [],
     }
   }
 
@@ -79,16 +82,24 @@ console.log("from the parent: " + recipeId);
       <div className="App">
 
       <div className= "App-intro">
-          <h1>Ingredients:</h1>
+        <h1>Creat Your Recipe Below:</h1>
+          <h2>Add Your Title & Ingredients:</h2>
           {
             this.state.recipes.map((recipes) => {
               return(
-              <Recipe recipeContent={ recipes.recipeContent }    recipeId={ recipes.id }
-              key={ recipes.id }
-              removeIngredients ={ this.removeIngredients }/>
-                )
-            })
-          }
+              <Recipe recipeContent={ recipes.recipeContent }   recipeId={ recipes.id }
+              key={ recipes.id } removeIngredients ={ this.removeIngredients }/>
+            )
+          })
+        }
+        {
+                this.state.title.map((title) => {
+                  return(
+              <Title titleContent={ title.titleContent } titleId={ title.id } key= { title.id }/>
+            )
+          })
+}
+
         </div>
 <br/>
 <br/>
