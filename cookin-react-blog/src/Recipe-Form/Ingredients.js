@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './Ingredients.css';
 
 
+
 class Ingredients extends Component{
 
 
@@ -9,22 +10,23 @@ class Ingredients extends Component{
     super(props);
     this.state = {
       newIngredientsContent: '',
-      newRecipeTitle:'',
+      newRecipeTitle:''
     };
     this.handleUserInput = this.handleUserInput.bind(this);
     this.writeIngredients = this.writeIngredients.bind(this);
     this.handleTitleInput = this.handleTitleInput.bind(this);
   }
+//for ingredients
 handleUserInput(e){
   this.setState({
     newIngredientsContent: e.target.value //vlaue of text input
 
   })
 }
-
+// for title
 handleTitleInput(e){
   this.setState({
-    newRecipeTitle: e.target.value
+    newRecipeTitle: e.target.value //value of text input
   })
 }
 writeIngredients(){
@@ -41,6 +43,9 @@ writeIngredients(){
 
 }
 
+
+
+
     render(){
       return(
         <div className="container">
@@ -50,14 +55,17 @@ writeIngredients(){
         <br/>
           <input className='recipeTitle' placeholder='Title of Recipe...' value={ this.state.newRecipeTitle } onChange= { this.handleTitleInput }/>
         <br/>
+
         <br/>
           <label>Ingredients (Separate By Comma):</label>
           <br/>
-          <input className="ingredientInput" placeholder="Write ingredients here..."
+          <textarea className="ingredientInput" placeholder="Write ingredients here..."
             value={ this.state.newIngredientsContent }
             onChange= { this.handleUserInput }/>
 
-          <button className="ingredientsButton" onClick={ this.writeIngredients } class="btn btn-success">Add Recipe!</button>
+<br/>
+<br/>
+          <button className="ingredientsButton" onClick={ this.writeIngredients } className="btn btn-success" type="submit">Add Recipe!</button>
 </form>
 
 

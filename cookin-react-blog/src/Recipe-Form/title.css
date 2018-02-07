@@ -1,0 +1,14 @@
+.title{
+  font-family: 'Abril Fatface', cursive;
+  display: flex;
+  justify-content: center;
+}
+
+.titleContent{
+  text-decoration: underline;
+}
+.closebutton{
+  color: red;
+  padding: 15px;
+
+}

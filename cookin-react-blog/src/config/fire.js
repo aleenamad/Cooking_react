@@ -1,4 +1,4 @@
-import firebase from 'firebase/app';
+//import firebase from 'firebase/app'; // commented out because getting unused warning
 import key from './key.js';
 
 // Initialize Firebase

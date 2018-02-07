@@ -1,12 +1,12 @@
-.App {
+.Main {
   text-align: center;
   /* background-color: grey; */
 }
 
 
 
-.App-header {
-  background-image: url('./Static/img/chuttersnap-412991.jpg');
+.Main-header {
+  background-image: url('../Static/img/chuttersnap-412991.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -17,7 +17,7 @@
 
 }
 
-.App-title {
+.Main-title {
   font-size: 50px;
   text-shadow: 4px 4px 8px #000000;
   color: white;
@@ -32,7 +32,7 @@
     border-bottom: 1px solid black;
 }
 
-.App-intro {
+.Main-intro {
   font-size: large;
   font-family: 'Abril Fatface', cursive;
 
