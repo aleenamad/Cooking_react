@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './home.css';
+import './aboutme.css';
 import Header from './header';
 
 
-class Home2 extends Component {
+class AboutMe extends Component {
   render() {
     return (
       <div className="App">
@@ -12,11 +12,8 @@ class Home2 extends Component {
 
           <div className="theBody">
             <Header />
-              <h1>Nadia's Cooking Blog Adventures</h1>
-              <h3>Click on About Me to see who I am</h3>
-
-
-
+              <h1>Hi! I'm Nadia but my friends call me Gonads</h1>
+              <img src={require("./img/IMG_5531.JPG")}/>
               </div>
             </div>
 
@@ -24,4 +21,4 @@ class Home2 extends Component {
   }
 }
 
-export default Home2;
+export default AboutMe;

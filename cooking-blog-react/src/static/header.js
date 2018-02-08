@@ -23,7 +23,7 @@ class Header extends Component {
           <a className="nav-link" href="/Create">Create a Recipe</a>
         </li>
         <li className="nav-item">
-          <a className="nav-link" href="#">About Me</a>
+          <a className="nav-link" href="/AboutMe">About Me</a>
         </li>
 
         <form className="form-inline">
