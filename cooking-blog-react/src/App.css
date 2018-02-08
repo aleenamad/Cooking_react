@@ -1,0 +1,29 @@
+.wrapper1 {
+font-family: 'Abril Fatface', cursive;
+text-align: center;
+font-size: 40px;
+}
+.button1{
+  display: flex;
+  justify-content: flex-end;
+
+}
+
+.container{
+  text-align: center;
+  font-family: 'Abril Fatface', cursive;
+
+}
+
+label{
+    font-size: 25px;
+}
+li{
+  list-style: circle;
+  list-style-position: inside;
+  font-size: 20px;
+}
+
+h2{
+  text-decoration: underline;
+}
