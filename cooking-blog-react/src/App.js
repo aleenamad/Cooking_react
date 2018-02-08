@@ -16,6 +16,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeThings = this.removeThings.bind(this);
+
   }
 
 handleChange(e){
@@ -62,6 +63,8 @@ removeThings(cookinId) {
 }
 
 
+
+
   render() {
     return (
       <div className="App">
@@ -73,39 +76,43 @@ removeThings(cookinId) {
         <div className="container">
 
 
-          <section className='display-recipes'>
-            <div className='wrapper'>
-              <ul>
-                {this.state.items.map((cookin) => {
-                  return(
-                    <div>
-                      <h1 key={cookin.id}></h1>
-                      <h2>{cookin.title}</h2>
-                      <li>{cookin.ingredients}</li>
-                      <button className="button1 btn btn-danger btn-sm" onClick={() => this.removeThings(cookin.id)}>Remove</button>
-                    </div>
-                  )
-                })}
-              </ul>
-            </div>
-          </section>
 
 
 
           <section className='add-item'>
             <form onSubmit={this.handleSubmit}>
+            <br/>
+              <h1 className="what">Create Your Recipe Here:</h1>
               <label>Title here:</label>
             <br/>
 
-              <input type='text' name='recipe' placeholder='place title here..' onChange={this.handleChange} value={this.state.title}/>
+              <input type='text' name='recipe' placeholder='place title here..' onChange={this.handleChange} value={this.state.recipe}/>
             <br/>
               <label>Ingredients here:</label>
               <br/>
 
-              <textarea type='text' name='ingredients' placeholder='write ingredients here...' onChange={this.handleChange} value={this.state.ingredients}/>
+              <textarea type='text' name='ingredients' placeholder='Separate by commas' onChange={this.handleChange} value={this.state.ingredients}/>
               <br/>
               <button className="btn btn-success">Add Recipe!</button>
             </form>
+              </section>
+              <section className='display-recipes'>
+                <div className='wrapper'>
+                  <ul>
+                    {this.state.items.map((cookin) => {
+                      return(
+                        <div className="bo">
+                          <h1 key={cookin.id}></h1>
+                          <h2>{cookin.title}</h2>
+
+                          <li className="ingred">{cookin.ingredients}</li>
+                          <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
+
+                        </div>
+                      )
+                    })}
+                  </ul>
+                </div>
               </section>
 
 

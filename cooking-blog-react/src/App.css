@@ -2,28 +2,35 @@
 font-family: 'Abril Fatface', cursive;
 text-align: center;
 font-size: 40px;
-}
-.button1{
-  display: flex;
-  justify-content: flex-end;
 
 }
 
+.what{
+  border-bottom: 2px solid black;
+}
 .container{
   text-align: center;
   font-family: 'Abril Fatface', cursive;
+  display: flex;
+  justify-content: space-between;
 
 }
 
 label{
-    font-size: 25px;
+    font-size: 50px;
+
 }
-li{
-  list-style: circle;
+.ingred{
+  list-style: disc;
   list-style-position: inside;
   font-size: 20px;
+  /* border-bottom: 2px solid black; */
 }
 
+.bo{
+  border-bottom: 2px solid black;
+
+}
 h2{
   text-decoration: underline;
 }
