@@ -113,10 +113,10 @@ removeThings(cookinId) {
                           <h1 key={cookin.id}></h1>
 
                           <h2 className="wassup">{cookin.title}</h2>
-                          <p className="here">Ingredients:</p>
+                          {/* <p className="here">Ingredients:</p>
                           <li className="ingred">{cookin.ingredients}</li>
                           <p className="here">Directions:</p>
-                          <p className="direct">{cookin.directions}</p>
+                          <p className="direct">{cookin.directions}</p> */}
 
                           <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
 

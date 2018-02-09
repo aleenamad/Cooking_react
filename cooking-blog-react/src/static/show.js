@@ -11,12 +11,14 @@ class Show extends Component {
     this.state = {
       recipe: '',
       ingredients: '',
+      directions: '',
       items: []
     }
     const cookinRef = firebase.database().ref('recipes');
     const cookin = {
       title: this.state.recipe,
-      ingredients: this.state.ingredients
+      ingredients: this.state.ingredients,
+      directions: this.state.directions
     }
 
 
@@ -27,7 +29,8 @@ class Show extends Component {
           newState.push({
             id: cookin,
             title: items[cookin].title,
-            ingredients: items[cookin].ingredients
+            ingredients: items[cookin].ingredients,
+            directions: items[cookin].directions
           });
         }
         this.setState({
@@ -64,6 +67,11 @@ class Show extends Component {
           <h1 key={cookin.id}></h1>
 
           <li className="yo">{cookin.title}</li>
+          <p className="here">Ingredients:</p>
+          <p className="ingred">{cookin.ingredients}</p>
+          <p className="here">Directions:</p>
+          <p className="directy">{cookin.directions}</p>
+          <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
             </div>
         )}
       )}
