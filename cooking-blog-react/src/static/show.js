@@ -71,8 +71,8 @@ class Show extends Component {
           <p className="ingred">{cookin.ingredients}</p>
           <p className="here">Directions:</p>
           <p className="directy">{cookin.directions}</p>
-          {/* <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
-            </div> */}
+          {/* <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button> */}
+            </div>
         )}
       )}
   </ul>
