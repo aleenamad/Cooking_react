@@ -10,13 +10,16 @@
 
 .showit{
   font-family: 'Abril Fatface', cursive;
-  border-bottom: 2px solid black;
-  padding-bottom: 5px;
+
 
 }
 
 .boya{
   text-align: center;
+  border-bottom: 2px solid black;
+  padding-bottom: 5px;
+  border-bottom-right-radius: 100px;
+  border-bottom-left-radius: 100px;
 
 
 }
