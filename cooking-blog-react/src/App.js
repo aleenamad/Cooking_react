@@ -87,18 +87,20 @@ removeThings(cookinId) {
             <form onSubmit={this.handleSubmit}>
             <br/>
               <h1 className="what">Create Your Recipe Here:</h1>
-              <label>Title here:</label>
+              <label>Title:</label>
             <br/>
 
-              <input type='text' name='recipe' placeholder='Place Title Here...' onChange={this.handleChange} value={this.state.recipe}/>
+              <input type='text' name='recipe' placeholder='Title...' onChange={this.handleChange} value={this.state.recipe}/>
             <br/>
-              <label>Ingredients here:</label>
+              <label>Ingredients:</label>
               <br/>
 
               <textarea type='text' name='ingredients' placeholder='Separate by commas' onChange={this.handleChange} value={this.state.ingredients}/>
 
               <br/>
-                <textarea type='text' name='directions' placeholder='Directions here...' onChange={this.handleChange} value={this.state.directions}/>
+              <label>Directions:</label>
+              <br/>
+                <textarea type='text' name='directions' placeholder='Directions...' onChange={this.handleChange} value={this.state.directions}/>
 
                 <br/>
               <button className="btn btn-success">Add Recipe!</button>
