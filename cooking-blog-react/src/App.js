@@ -79,10 +79,6 @@ removeThings(cookinId) {
 
         <div className="container">
 
-
-
-
-
           <section className='add-item'>
             <form onSubmit={this.handleSubmit}>
             <br/>
