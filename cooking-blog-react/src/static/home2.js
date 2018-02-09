@@ -13,7 +13,8 @@ class Home2 extends Component {
           <div className="theBody">
             <Header />
               <h1 className="hey">Nadia's Cooking Blog Adventures</h1>
-
+              <br/>
+              <br/>
               <div className="container3">
 
             <h3>Drake Farewell Cake <br/> <img className="cake"  src={require('./img/cake.JPG')}/></h3>

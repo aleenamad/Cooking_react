@@ -96,8 +96,10 @@ removeThings(cookinId) {
               <br/>
 
               <textarea type='text' name='ingredients' placeholder='Separate by commas' onChange={this.handleChange} value={this.state.ingredients}/>
+
               <br/>
                 <textarea type='text' name='directions' placeholder='Directions here...' onChange={this.handleChange} value={this.state.directions}/>
+
                 <br/>
               <button className="btn btn-success">Add Recipe!</button>
             </form>
@@ -109,9 +111,11 @@ removeThings(cookinId) {
                       return(
                         <div className="bo">
                           <h1 key={cookin.id}></h1>
-                          <h2>{cookin.title}</h2>
 
+                          <h2 className="wassup">{cookin.title}</h2>
+                          <p className="here">Ingredients:</p>
                           <li className="ingred">{cookin.ingredients}</li>
+                          <p className="here">Directions:</p>
                           <p className="direct">{cookin.directions}</p>
 
                           <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>

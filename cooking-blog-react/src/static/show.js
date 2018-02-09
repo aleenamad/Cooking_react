@@ -37,11 +37,6 @@ class Show extends Component {
     //   });
     // }
 
-
-
-
-
-
   }
   render(){
     return(
@@ -51,23 +46,25 @@ class Show extends Component {
 <header>
   <Header />
 </header>
+<br/>
 
 <div className="container4">
 
 <h1>All the Recipes:</h1>
 
 
+
 </div>
 
-<div className="showit">
+{/* <div className="showit">
   {
     this.state.items.map((cookin) => {
       return(
-      <h2> {cookin.title}</h2>
+    <h1 title={cookin.title}></h1>
       )
     })
   }
-</div>
+</div> */}
 
 
 
