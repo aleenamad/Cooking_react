@@ -19,23 +19,22 @@ class Show extends Component {
       ingredients: this.state.ingredients
     }
 
-    // componentDidMount(){
-    //   const cookinRef = firebase.database().ref('recipes');
-    //   cookinRef.on('value', (snapshot) => {
-    //     let items = snapshot.val()
-    //     let newState = [];
-    //     for (let cookin in items) {
-    //       newState.push({
-    //         id: cookin,
-    //         title: items[cookin].title,
-    //         ingredients: items[cookin].ingredients
-    //       });
-    //     }
-    //     this.setState({
-    //       items: newState
-    //     });
-    //   });
-    // }
+
+      cookinRef.on('value', (snapshot) => {
+        let items = snapshot.val();
+        let newState = [];
+        for (let cookin in items) {
+          newState.push({
+            id: cookin,
+            title: items[cookin].title,
+            ingredients: items[cookin].ingredients
+          });
+        }
+        this.setState({
+          items: newState
+        });
+      });
+
 
   }
   render(){
@@ -56,15 +55,20 @@ class Show extends Component {
 
 </div>
 
-{/* <div className="showit">
-  {
-    this.state.items.map((cookin) => {
+<div className="showit">
+
+    {
+      this.state.items.map((cookin) => {
       return(
-    <h1 title={cookin.title}></h1>
-      )
-    })
-  }
-</div> */}
+        <div className="boya">
+          <h1 key={cookin.id}></h1>
+
+          <h2 className="yo">{cookin.title}</h2>
+            </div>
+        )}
+      )}
+  
+</div>
 
 
 
