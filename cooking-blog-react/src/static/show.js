@@ -56,18 +56,18 @@ class Show extends Component {
 </div>
 
 <div className="showit">
-
+  <ul>
     {
       this.state.items.map((cookin) => {
       return(
         <div className="boya">
           <h1 key={cookin.id}></h1>
 
-          <h2 className="yo">{cookin.title}</h2>
+          <li className="yo">{cookin.title}</li>
             </div>
         )}
       )}
-  
+  </ul>
 </div>
 
 
