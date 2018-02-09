@@ -3,6 +3,8 @@ Project 3: Aleena Madni
 <br>
 ![Alt Text](https://media.giphy.com/media/Ml6gy917s5Dkk/giphy.gif)
 <br>
+## Deployed Link:
+[Cooking-Blog](https://cooking-blog-56a96.firebaseapp.com/)
 ## Description:
 A cooking blog built by React.js and using Firebase as a backend!
 The user can add/edit recipes by making an ingredients list and have step by step directions. Recipes can also be deleted if they aren't used as much as the other recipes.
