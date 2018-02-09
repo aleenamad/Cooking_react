@@ -10,6 +10,7 @@ class App extends Component {
     this.state = {
       recipe: '',
       ingredients: '',
+      directions: '',
       items: []
 
     }
@@ -30,12 +31,14 @@ handleSubmit(e) {
   const cookinRef = firebase.database().ref('recipes');
   const cookin = {
     title: this.state.recipe,
-    ingredients: this.state.ingredients
+    ingredients: this.state.ingredients,
+    directions: this.state.directions
   }
   cookinRef.push(cookin);
   this.setState({
     recipe: '',
-    ingredients: ''
+    ingredients: '',
+    directions: ''
   });
 }
 
@@ -48,7 +51,8 @@ componentDidMount() {
       newState.push({
         id: cookin,
         title: items[cookin].title,
-        ingredients: items[cookin].ingredients
+        ingredients: items[cookin].ingredients,
+        directions: items[cookin].directions
       });
     }
     this.setState({
@@ -86,13 +90,15 @@ removeThings(cookinId) {
               <label>Title here:</label>
             <br/>
 
-              <input type='text' name='recipe' placeholder='place title here..' onChange={this.handleChange} value={this.state.recipe}/>
+              <input type='text' name='recipe' placeholder='Place Title Here...' onChange={this.handleChange} value={this.state.recipe}/>
             <br/>
               <label>Ingredients here:</label>
               <br/>
 
               <textarea type='text' name='ingredients' placeholder='Separate by commas' onChange={this.handleChange} value={this.state.ingredients}/>
               <br/>
+                <textarea type='text' name='directions' placeholder='Directions here...' onChange={this.handleChange} value={this.state.directions}/>
+                <br/>
               <button className="btn btn-success">Add Recipe!</button>
             </form>
               </section>
@@ -106,6 +112,8 @@ removeThings(cookinId) {
                           <h2>{cookin.title}</h2>
 
                           <li className="ingred">{cookin.ingredients}</li>
+                          <p className="direct">{cookin.directions}</p>
+
                           <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
 
                         </div>

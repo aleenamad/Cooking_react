@@ -17,7 +17,7 @@ class Header extends Component {
         <a className="nav-link active" href="/">Home</a>
         </li>
       <li className="nav-item">
-        <a className="nav-link active" href="/">Recipes</a>
+        <a className="nav-link active" href="/Recipes">Recipes</a>
         </li>
         <li className="nav-item">
           <a className="nav-link" href="/Create">Create a Recipe</a>

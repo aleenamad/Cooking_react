@@ -12,7 +12,7 @@ class Home2 extends Component {
 
           <div className="theBody">
             <Header />
-              <h1>Nadia's Cooking Blog Adventures</h1>
+              <h1 className="hey">Nadia's Cooking Blog Adventures</h1>
 
               <div className="container3">
 
@@ -21,7 +21,7 @@ class Home2 extends Component {
                 <h3>A Family FruitCake <br/> <img className="fruitcake" src={require('./img/fruitcake.jpg')}/></h3>
 
               <h3>Me With A Cake<br/><img className="nadiacake" src={require('./img/nadiawcake.jpg')}/></h3>
-          
+
             <h3>Some Moist Cupcakes<br/>  <img className="cupcake" src={require('./img/cupcake.jpg')}/></h3>
             </div>
 
