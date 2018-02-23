@@ -7,7 +7,7 @@ Final Project: Aleena Madni
 [Cooking-Blog](https://cooking-blog-56a96.firebaseapp.com/)
 ## Description:
 A cooking blog built by React.js and using Firebase as a backend!
-The user can add/edit recipes by making an ingredients list and have step by step directions. Recipes can also be deleted if they aren't used as much as the other recipes.
+The user can log in thru google then add/edit recipes by making an ingredients list and have step by step directions. Recipes can also be deleted if they aren't used as much as the other recipes. The user can also search for recipes with the search bar. Other users can log in and leave comments on what they think about the recipe. 
 
 ## Additions for the Final Project:
 * Functional update to complete CRUD
