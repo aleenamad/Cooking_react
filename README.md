@@ -13,13 +13,14 @@ The user can add/edit recipes by making an ingredients list and have step by ste
 * Functional update to complete CRUD
 * Add a comment section
 * Log in with google auth
+* Functional Search bar
 
 ## WireFrame:
-![img](./Images/CookinWire.png)
+![img](./Images/wireframe1.jpg)
 <br>
-A more detailed Wire Frame:
+![img](./Images/wireframe2.jpg)
 <br>
-![img](./Images/CookinMoreWire.jpeg)
+![img](./Images/wireframe3.jpg)
 
 ## Database ERD (Entity Relationship Diagram):
 ![img](./Images/CookinERD.jpeg)
