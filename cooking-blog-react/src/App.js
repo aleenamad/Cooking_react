@@ -66,7 +66,12 @@ removeThings(cookinId) {
   cookinRef.remove();
 }
 
-
+// updateThings(cookinId, data) => {
+//   return firebaseDb.ref('recipes').child(id).update(data).then(() => {
+//     return {};
+//
+//   })
+// }
 
 
   render() {
@@ -115,7 +120,7 @@ removeThings(cookinId) {
                           <li className="ingred">{cookin.ingredients}</li>
                           <p className="here">Directions:</p>
                           <p className="direct">{cookin.directions}</p> */}
-
+                    
                           <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
 
                         </div>

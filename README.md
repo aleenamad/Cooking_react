@@ -1,5 +1,5 @@
 # Cooking React
-Project 3: Aleena Madni
+Final Project: Aleena Madni
 <br>
 ![Alt Text](https://media.giphy.com/media/Ml6gy917s5Dkk/giphy.gif)
 <br>
@@ -8,6 +8,12 @@ Project 3: Aleena Madni
 ## Description:
 A cooking blog built by React.js and using Firebase as a backend!
 The user can add/edit recipes by making an ingredients list and have step by step directions. Recipes can also be deleted if they aren't used as much as the other recipes.
+
+## Additions for the Final Project:
+* Functional update to complete CRUD
+* Add a comment section
+* Log in with google auth
+
 ## WireFrame:
 ![img](./Images/CookinWire.png)
 <br>
