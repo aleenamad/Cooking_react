@@ -16,11 +16,11 @@ The user can add/edit recipes by making an ingredients list and have step by ste
 * Functional Search bar
 
 ## WireFrame:
-![img](./Images/wireframe1.jpg)
+![img](./Images/wireframe1.png)
 <br>
-![img](./Images/wireframe2.jpg)
+![img](./Images/wireframe2.png)
 <br>
-![img](./Images/wireframe3.jpg)
+![img](./Images/wireframe3.png)
 
 ## Database ERD (Entity Relationship Diagram):
 ![img](./Images/CookinERD.jpeg)
