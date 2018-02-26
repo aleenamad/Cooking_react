@@ -60,8 +60,8 @@ class Show extends Component {
 
 
   <form className="form">
-    <input type="search"   placeholder="Search" aria-label="Search"></input>
-    <button className="btn btn-outline-primary btn-sm"  type="submit">Go!</button>
+    <input className="search" type="search" placeholder="Search" aria-label="Search"></input>
+    <button className="btn btn-outline-primary btn-lg"  type="submit">Go!</button>
   </form>
   <hr/>
   <div className="showit">

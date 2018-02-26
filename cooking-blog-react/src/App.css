@@ -5,6 +5,33 @@ font-size: 40px;
 
 }
 
+.modal {
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.modal-body{
+  text-align: center;
+}
+.modal-title{
+  font-family: 'Abril Fatface', cursive;
+  font-size: 25px;
+}
+
 .what{
   border-bottom: 2px solid black;
   text-shadow: 0px 2px 5px rgba(0,0,0,0.1),
@@ -21,6 +48,15 @@ font-size: 40px;
 
 
 }
+
+
+.deleteBut{
+  /* padding-left: 10px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
 .direct{
 /* height: 500px; */
   width: 500px;
@@ -32,28 +68,56 @@ label{
                  10px 20px 5px rgba(0,0,0,0.05),
                  -10px 20px 5px rgba(0,0,0,0.05);
     padding-right: 50px;
+    font-family: 'Abril Fatface', cursive;
 
 
+}
+
+.label2{
+  font-family: 'Abril Fatface', cursive;
+  text-align: center;
+  font-size: 45px;
 }
 .wassup{
   /* color: #8E91FF; */
   text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
                10px 20px 5px rgba(0,0,0,0.05),
                -10px 20px 5px rgba(0,0,0,0.05);
+  font-size: 35px;
 
 }
 textarea{
   height: 75px;
   width: 500px;
+
+
+}
+
+#heyyou{
+  height: 40px;
+  width: 200px;
 }
 ::-webkit-input-placeholder{
   text-align: center;
+  /* font-size: 50px; */
 }
 
+/* ::-webkit-input-type{
+  font-size: 90px;
+} */
+
+.editthis{
+  height: 45px;
+  width: 300px;
+}
 .here{
 color: #8DB8E8;
 display: inline;
 font-size: 20px;
+}
+
+.what{
+  font-size: 35px;
 }
 .bo{
   border-bottom: 2px solid black;
