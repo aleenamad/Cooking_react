@@ -55,10 +55,16 @@ class Show extends Component {
 
 <h1>All the Recipes:</h1>
 
-
+<br/>
 </div>
 
-<div className="showit">
+
+  <form className="form">
+    <input type="search"   placeholder="Search" aria-label="Search"></input>
+    <button className="btn btn-outline-primary btn-sm"  type="submit">Go!</button>
+  </form>
+  <hr/>
+  <div className="showit">
   <ul>
     {
       this.state.items.map((cookin) => {
@@ -72,11 +78,15 @@ class Show extends Component {
           <p className="here">Directions:</p>
           <p className="directy">{cookin.directions}</p>
           {/* <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button> */}
+          <hr/>
             </div>
         )}
       )}
+
   </ul>
+
 </div>
+
 
 
 

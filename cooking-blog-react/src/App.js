@@ -4,6 +4,7 @@ import firebase from 'firebase/app';
 import 'firebase/database';
 import './App.css';
 import Header from './static/header';
+
 class App extends Component {
   constructor(){
     super();
@@ -17,6 +18,7 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeThings = this.removeThings.bind(this);
+    this.updateThings = this.updateThings.bind(this);
 
   }
 
@@ -42,6 +44,7 @@ handleSubmit(e) {
   });
 }
 
+
 componentDidMount() {
   const cookinRef = firebase.database().ref('recipes');
   cookinRef.on('value', (snapshot) => {
@@ -61,17 +64,22 @@ componentDidMount() {
   });
 }
 
+
 removeThings(cookinId) {
   const cookinRef = firebase.database().ref(`/recipes/${cookinId}`);
   cookinRef.remove();
 }
 
-// updateThings(cookinId, data) => {
-//   return firebaseDb.ref('recipes').child(id).update(data).then(() => {
-//     return {};
-//
-//   })
-// }
+updateThings(cookinId, data) {
+    return firebase.database().ref(`/recipes/${cookinId}`).child(cookinId).update(data).then(() => {
+      return {};
+ }).catch(error => {
+    return {
+      errorCode: error.code,
+      errorMessage: error.message
+    }
+});
+ }
 
 
   render() {
@@ -89,24 +97,28 @@ removeThings(cookinId) {
             <br/>
               <h1 className="what">Create Your Recipe Here:</h1>
               <label>Title:</label>
-            <br/>
+            {/* <br/> */}
+            {/* <br/> */}
 
               <input type='text' name='recipe' placeholder='Title...' onChange={this.handleChange} value={this.state.recipe}/>
             <br/>
+            <br/>
               <label>Ingredients:</label>
-              <br/>
+              {/* <br/> */}
 
-              <textarea type='text' name='ingredients' placeholder='Separate by commas' onChange={this.handleChange} value={this.state.ingredients}/>
+              <textarea type='text' name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange} value={this.state.ingredients}/>
 
-              <br/>
+              {/* <br/> */}
               <label>Directions:</label>
-              <br/>
+              {/* <br/> */}
                 <textarea type='text' name='directions' placeholder='Directions...' onChange={this.handleChange} value={this.state.directions}/>
 
                 <br/>
+
               <button className="btn btn-success">Add Recipe!</button>
             </form>
               </section>
+              <br/>
               <section className='display-recipes'>
                 <div className='wrapper'>
                   <ul>
@@ -120,14 +132,19 @@ removeThings(cookinId) {
                           <li className="ingred">{cookin.ingredients}</li>
                           <p className="here">Directions:</p>
                           <p className="direct">{cookin.directions}</p> */}
-                    
+
+                          <button className="btn btn-success btn-sm" id="butt" onClick={() => this.updateThings(cookin.id)}>update!</button>
+
                           <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
+
+
 
                         </div>
                       )
                     })}
                   </ul>
                 </div>
+                {/* <hr/> */}
               </section>
 
 

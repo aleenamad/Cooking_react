@@ -26,10 +26,10 @@ class Header extends Component {
           <a className="nav-link" href="/AboutMe">About Me</a>
         </li>
 
-        <form className="form-inline">
+        {/* <form className="form-inline">
           <input className="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search"></input>
           <button className="btn btn-outline-primary my-2 my-sm-0"  type="submit">Search</button>
-        </form>
+        </form> */}
 
 
 
