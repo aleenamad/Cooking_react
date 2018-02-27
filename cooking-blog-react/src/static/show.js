@@ -4,20 +4,23 @@ import Header from './header';
 import './show.css';
 import 'firebase/database';
 import firebase from 'firebase/app';
+import {Modal} from 'react-bootstrap';
 
 class Show extends Component {
   constructor(){
     super();
 
     this.state = {
+      showModal: false,
       recipe: '',
       ingredients: '',
       directions: '',
       items: [],
-      search: ''
+      search: '',
     }
 
-
+    this.handleShow = this.handleShow.bind(this);
+    this.handleClose = this.handleClose.bind(this);
 
     const cookinRef = firebase.database().ref('recipes');
     const cookin = {
@@ -44,6 +47,21 @@ class Show extends Component {
 
 
 
+  }
+  handleClose() {
+    this.setState({ showModal: false });
+  }
+
+
+
+  handleShow(cookin) {
+    this.setState({
+      showModal: true,
+      openModelTitle: cookin.title,
+      openModelIngredients: cookin.ingredients,
+      openModelDirections: cookin.directions
+
+    });
   }
 
   updateSearch(event){
@@ -86,6 +104,7 @@ class Show extends Component {
 
   <hr/>
   <div className="showit">
+
   <ul>
     {
       filteredRecipes.map((cookin) => {
@@ -94,11 +113,25 @@ class Show extends Component {
           <h1 key={cookin.id}></h1>
 
           <li className="yo">{cookin.title}</li>
+        <button type="button" className="btn btn-primary btn-lg" onClick={ ()=>
+        this.handleShow(cookin)}>Details!</button>
+
+        <Modal show={this.state.showModal} onHide={this.handleClose}>
+          <Modal.Header>
+            <Modal.Title>Description For: {this.state.openModelTitle}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
           <p className="here">Ingredients:</p>
-          <p className="ingred">{cookin.ingredients}</p>
+          <p className="ingred">{this.state.openModelIngredients}</p>
           <p className="here">Directions:</p>
-          <p className="directy">{cookin.directions}</p>
-          {/* <button className="btn btn-danger btn-sm" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button> */}
+          <p className="directy">{this.state.openModelDirections}</p>
+          </Modal.Body>
+          <Modal.Footer>
+            <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal"onClick={this.handleClose}>Close</button>
+
+          </Modal.Footer>
+        </Modal>
+
           <hr/>
             </div>
         )}

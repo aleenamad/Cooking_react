@@ -9,7 +9,7 @@ import Header from './static/header';
 // import Modal from 'react-bootstrap-modal';
 
 import {Modal} from 'react-bootstrap';
-import Button from 'react-bootstrap'
+// import Button from 'react-bootstrap'
 
 
 class App extends Component {
@@ -25,6 +25,7 @@ class App extends Component {
 
 
 
+
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -35,7 +36,6 @@ class App extends Component {
     this.updateThings = this.updateThings.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
 
 
   }
@@ -146,13 +146,13 @@ updateThings(cookinId, items) {
               <label>Title:</label>
 
 
-              <input type='text' name='recipe' id="heyyou" onChange={this.handleChange} value={this.state.recipe}/>
+              <input type='text' name='recipe' id="title" onChange={this.handleChange} value={this.state.recipe}/>
             <br/>
             <br/>
               <label>Ingredients:</label>
 
 
-              <textarea type='text' name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange} value={this.state.ingredients}/>
+              <textarea type='text' name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange || this.separateComma}  value={this.state.ingredients}/>
 
 
               <label>Directions:</label>
@@ -175,17 +175,6 @@ updateThings(cookinId, items) {
                           <h1 key={cookin.id}></h1>
 
                           <h1 className="wassup">{cookin.title}</h1>
-                          {/* <p className="here">Ingredients:</p>
-                          <li className="ingred">{cookin.ingredients}</li>
-                          <p className="here">Directions:</p>
-                          <p className="direct">{cookin.directions}</p> */}
-                        <br/>
-
-
-                          {/* <button className="btn btn-success btn-sm" id="butt" onClick={() => this.updateThings(cookin.id)}>Edit!</button> */}
-
-
-
 
 
 
