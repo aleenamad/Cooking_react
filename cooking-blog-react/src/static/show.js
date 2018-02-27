@@ -8,19 +8,23 @@ import firebase from 'firebase/app';
 class Show extends Component {
   constructor(){
     super();
+
     this.state = {
       recipe: '',
       ingredients: '',
       directions: '',
-      items: []
+      items: [],
+      search: ''
     }
+
+
+
     const cookinRef = firebase.database().ref('recipes');
     const cookin = {
       title: this.state.recipe,
       ingredients: this.state.ingredients,
       directions: this.state.directions
     }
-
 
       cookinRef.on('value', (snapshot) => {
         let items = snapshot.val();
@@ -41,7 +45,16 @@ class Show extends Component {
 
 
   }
+
+  updateSearch(event){
+    this.setState({search: event.target.value.substr(0, 20)});
+  }
   render(){
+    let filteredRecipes = this.state.items.filter(
+      (cookin) => {
+        return cookin.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+      }
+    );
     return(
 
 <div className="ShowAll">
@@ -60,14 +73,22 @@ class Show extends Component {
 
 
   <form className="form">
-    <input className="search" type="search" placeholder="Search" aria-label="Search"></input>
-    <button className="btn btn-outline-primary btn-lg"  type="submit">Go!</button>
+    <label className="label3">Sort Through Recipes here:</label>
+    {/* <br/> */}
+    <input className="search" type="text" placeholder="Sort here..." aria-label="Search" onChange={this.updateSearch.bind(this)} value={this.state.search}/>
+
   </form>
+
+
+
+
+
+
   <hr/>
   <div className="showit">
   <ul>
     {
-      this.state.items.map((cookin) => {
+      filteredRecipes.map((cookin) => {
       return(
         <div className="boya">
           <h1 key={cookin.id}></h1>

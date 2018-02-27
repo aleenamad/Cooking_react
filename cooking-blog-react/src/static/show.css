@@ -10,7 +10,12 @@
 h1{
   font-size: 45px;
 }
+.label3{
+  font-family: 'Abril Fatface', cursive;
+  font-size: 25px;
+  text-align: center;
 
+}
 .search {
   width: 150px;
   height: 30px;
