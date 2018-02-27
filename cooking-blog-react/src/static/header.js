@@ -1,6 +1,52 @@
+import firebase, { auth, provider } from '../config/fire.js';
 import React, { Component } from 'react';
 import './header.css';
+
+
+
+
+
+
+
 class Header extends Component {
+  constructor() {
+    super();
+    this.state = {
+      user: null // <-- add this line
+    }
+    this.login = this.login.bind(this); // <-- add this line
+    this.logout = this.logout.bind(this); // <-- add this line
+  }
+
+
+  logout() {
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null
+        });
+      });
+
+}
+login() {
+  auth.signInWithPopup(provider)
+  .then((result) => {
+    console.log("hey");
+	const user = result.user;
+  this.setState({
+    user
+  });
+});
+}
+
+
+componentDidMount() {
+  auth.onAuthStateChanged((user) => {
+    if (user) {
+      this.setState({ user });
+    }
+  });
+}
   render() {
     return (
 
@@ -26,16 +72,28 @@ class Header extends Component {
           <a className="nav-link" href="/AboutMe">About Me</a>
         </li>
 
-        {/* <form className="form-inline">
-          <input className="form-control mr-sm-2" type="search"   placeholder="Search" aria-label="Search"></input>
-          <button className="btn btn-outline-primary my-2 my-sm-0"  type="submit">Search</button>
-        </form> */}
-
+        {this.state.user ?
+      <button onClick={this.logout} className="btn btn-success btn-lg">Log Out</button>
+      :
+      <button onClick={this.login} className="btn btn-success btn-lg">Log In</button>
+    }
 
 
       </ul>
       </div>
+      {this.state.user ?
+    <div>
+      <div className='user-profile'>
+        <img src={this.state.user.photoURL} />
+      </div>
     </div>
+    :
+    <div className='wrappers'>
+      <p>You must be logged in to see the potluck list and submit to it.</p>
+    </div>
+  }
+</div>
+
 
 
   );

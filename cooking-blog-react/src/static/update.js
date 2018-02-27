@@ -1,45 +1,35 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './update.css';
 import Header from './header';
-// import Modal from 'react-bootstrap/lib/Modal';
-import Modal from 'react-bootstrap-modal';
 import firebase from 'firebase/app';
 import 'firebase/database';
+import {Modal} from 'react-bootstrap';
+import Button from 'react-bootstrap'
 
-
-class Update extends React.Component {
-  constructor(props, context) {
-    super(props, context);
-
-    this.handleShow = this.handleShow.bind(this);
-    this.handleClose = this.handleClose.bind(this);
-    this.handleUpdateChange = this.handleUpdateChange.bind(this);
-    this.updateThings = this.updateThings.bind(this);
+class UpdateableItem extends Component {
+  constructor (props) {
+    super(props);
     this.state = {
-      show: false,
-      recipe: '',
-      ingredients: '',
-      directions: '',
-      items: []
+      recipe: props.recipe,
+      ingredients: props.ingredients,
+      directions: props.directions,
     };
+    this.cookinRef = firebase.database().ref().child('recipes');
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.itemChange = this.itemChange.bind(this);
+    this.handleUpdateItem = this.handleUpdateItem.bind(this);
   }
 
-  handleClose() {
-    this.setState({ show: false });
+  itemChange(e) {
+    this.setState({ [e.target.name]: e.target.value })
   }
 
-  handleShow() {
-    console.log('show method called');
-    this.setState({ show: true });
+  handleUpdateItem(e) {
+    e.preventDefault();
+    if (this.state.recipe && this.state.recipe.trim().length !== 0) {
+      this.cookinRef.child(this.props.dbkey).update(this.state);
+    }
   }
-  handleUpdateChange(e){
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
-
-
-
   handleSubmit(e) {
     e.preventDefault();
     const cookinRef = firebase.database().ref('recipes');
@@ -55,71 +45,48 @@ class Update extends React.Component {
       directions: ''
     });
   }
-
-  componentDidMount() {
-
-    const cookinRef = firebase.database().ref('recipes');
-    cookinRef.on('value', (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
-      for (let cookin in items) {
-        newState.push({
-          id: cookin,
-          title: items[cookin].title,
-          ingredients: items[cookin].ingredients,
-          directions: items[cookin].directions
-        });
-      }
-      this.setState({
-        items: newState
-      });
-    });
-  }
-
-
-  updateThings(cookinId, cookin) {
-      const cookinRef = firebase.database().ref(`/recipes/${cookinId}`);
-      cookinRef.update(cookin).child(cookinId);
-    }
-  render() {
+  render(){
     return (
+      <div className="deleteBut">
+        <div className="modal-container">
+          <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin)}>Edit!</button>
 
-<div>
-  <button type="button" className="btn btn-success btn-sm" onClick={this.handleShow}>Edit!</button>
+          <Modal show={this.state.showModal} onHide={this.handleClose}>
 
-  <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal.Header>
+              <Modal.Title>Edit Recipe</Modal.Title>
+            </Modal.Header>
 
-    <Modal.Header closeButton>
-      <Modal.Title>Edit Recipe</Modal.Title>
-    </Modal.Header>
+              <Modal.Body>
+                <form onSubmit={this.handleUpdateItem}>
+                <label className="label2" htmlFor={this.props.dbkey + 'recipename'}>Title:</label>
+                <br/>
 
-      <Modal.Body>
-        <form onSubmit={this.handleSubmit}>
-        <label>Title:</label>
+                <input type='text' class="input-group input-group-lg" name='recipe' id={this.props.dbkey + 'recipename'} onChange={this.itemChange} placeholder={this.state.openModelTitle}
+                value={this.state.recipe}
+                />
+              <br/>
+              <br/>
+                <label className="label2" htmlFor={this.props.dbkey + 'recipeingredients'}>Ingredients:</label>
 
-        <input type='text' name='recipe' placeholder='Title...' onChange={this.handleUpdateChange} value={this.state.recipe}/>
-      <br/>
-      <br/>
-        <label>Ingredients:</label>
+                <textarea className="editthis" type='text' name='ingredients' id={this.props.dbkey + 'recipeingredients'}  onChange={this.itemChange} placeholder={this.state.openModelIngredients} value={this.state.ingredients}/>
 
-        <textarea type='text' name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleUpdateChange} value={this.state.ingredients}/>
+                <label className="label2" htmlFor={this.props.dbkey + 'recipedirections'}>Directions:</label>
 
-        <label>Directions:</label>
+                  <textarea className="editthis" type='text' name='directions' id={this.props.dbkey + 'recipedirections'} onChange={this.itemChange} placeholder={this.state.openModelDirections} value={this.state.directions}/>
 
-          <textarea type='text' name='directions' placeholder='Directions...' onChange={this.handleUpdateChange} value={this.state.directions}/>
-          </form>
+                </form>
 
-      </Modal.Body>
-      <Modal.Footer>
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary" onClick={() => this.updateThings()}>Save changes</button>
-        </Modal.Footer>
+              </Modal.Body>
+              <Modal.Footer>
+                <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal"onClick={this.handleClose}>Close</button>
+                <button type="button" className="btn btn-primary btn-lg" onClick={() => this.updateThings(cookin.id)}>Save changes</button>
 
-    </Modal>
-    </div>
-  )
+                </Modal.Footer>
+
+            </Modal>
+            </div>
+          </div>
+    );
   }
 }
-
-export default Update;
-// render(<Update />);

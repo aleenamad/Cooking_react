@@ -30,3 +30,21 @@
 
 
 }
+.user-profile {
+  position: absolute;
+  top: 402px;
+  right: 60px;
+  width: 100px;
+  height: 100px;
+}
+
+.user-profile img {
+  border-radius: 100%;
+  max-width: 45%;
+  max-height: 45%;
+}
+p{
+  font-family: 'Abril Fatface', cursive;
+  text-align: center;
+
+}

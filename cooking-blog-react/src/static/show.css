@@ -4,6 +4,7 @@
   text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
                  10px 20px 5px rgba(0,0,0,0.05),
                  -10px 20px 5px rgba(0,0,0,0.05);
+  font-family: 'Abril Fatface', cursive;
 }
 
 h1{
@@ -21,7 +22,9 @@ h1{
   text-align: center;
   /* padding-right: 100px; */
 
-
+p{
+  font-family: 'Abril Fatface', cursive;
+}
 
 
 }

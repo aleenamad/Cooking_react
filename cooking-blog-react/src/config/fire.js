@@ -1,8 +1,8 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase';
 import key from './key.js';
 
 
-const fire_config = {
+const config = {
     apiKey: key,
     authDomain: "cooking-blog-56a96.firebaseapp.com",
     databaseURL: "https://cooking-blog-56a96.firebaseio.com",
@@ -10,6 +10,13 @@ const fire_config = {
     storageBucket: "cooking-blog-56a96.appspot.com",
     messagingSenderId: "901701697829"
   };
-firebase.initializeApp(fire_config);
+firebase.initializeApp(config);
+
+export const provider = new firebase.auth.GoogleAuthProvider();
+
+provider.addScope('https://www.googleapis.com/auth/plus.login');
+
+export const auth = firebase.auth();
+export const database = firebase.database();
 
 export default firebase;

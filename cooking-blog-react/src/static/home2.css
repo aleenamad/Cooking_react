@@ -6,7 +6,7 @@ align-content: center;
 justify-content: space-around;
 /* background-color: grey; */
 color: #8DB8E8;
-
+font-family: 'Abril Fatface', cursive;
 }
 
 .hey{
@@ -14,7 +14,7 @@ color: #8DB8E8;
   text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
                  10px 20px 5px rgba(0,0,0,0.05),
                  -10px 20px 5px rgba(0,0,0,0.05);
-  
+
 }
 .cake{
   height: 300px;
