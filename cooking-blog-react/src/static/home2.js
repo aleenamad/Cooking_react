@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './home2.css';
 import Header from './header';
 import {Carousel} from 'react-bootstrap';
+var Slider = require('react-slick');
+
 
 
 class Home2 extends Component {

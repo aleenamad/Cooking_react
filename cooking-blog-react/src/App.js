@@ -50,14 +50,14 @@ class App extends Component {
 
 
 
-  handleShow(cookin) {
+  handleShow(id) {
     this.setState({
-      showModal: true,
-      openModelTitle: cookin.title,
-      openModelIngredients: cookin.ingredients,
-      openModelDirections: cookin.directions,
-      openModelCookTime: cookin.cookTime,
-      openModelPrepTime: cookin.prepTime,
+      showModal: id,
+      // openModelTitle: cookin.title,
+      // openModelIngredients: cookin.ingredients,
+      // openModelDirections: cookin.directions,
+      // openModelCookTime: cookin.cookTime,
+      // openModelPrepTime: cookin.prepTime,
 
     });
   }
@@ -139,9 +139,28 @@ removeThings(cookinId) {
 }
 
 
-updateThings(cookinId, items) {
-    const cookinRef = firebase.database().ref(`/recipes/${cookinId}`);
-    cookinRef.update().child(items)
+updateThings(cookin) {
+    const cookinRef = firebase.database().ref(`/recipes/${cookin.id}`);
+    let updates = {
+      title: this.state.recipe,
+      ingredients: this.state.ingredients,
+      directions: this.state.directions,
+      cookTime: this.state.cookTime,
+      prepTime: this.state.prepTime,
+    };
+    /*updates['/recipes/'+ cookinId] = {
+      title: '',
+      ingredients: '',
+    }*/
+    cookinRef.update(updates);
+    this.handleClose();
+    this.setState({
+      recipe: '',
+      ingredients: '',
+      directions: '',
+      cookTime: '',
+      prepTime: '',
+    });
   }
 
 
@@ -209,9 +228,9 @@ updateThings(cookinId, items) {
 
 <div className="deleteBut">
   <div className="modal-container">
-    <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin)}>Edit!</button>
+    <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin.id)}>Edit!</button>
 
-    <Modal show={this.state.showModal} onHide={this.handleClose}>
+    <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose}>
 
       <Modal.Header>
         <Modal.Title>Edit Recipe</Modal.Title>
@@ -222,33 +241,36 @@ updateThings(cookinId, items) {
           <label className="label2">Title:</label>
           <br/>
 
-          <input type='text' class="input-lg" name='recipe' onChange={this.handleUpdateChange} placeholder={this.state.openModelTitle}
+          <input type='text' class="input-lg" name='recipe' onChange={this.handleUpdateChange}
           value={this.state.recipe}
           />
         <br/>
         <br/>
           <label className="label2">Ingredients:</label>
 
-          <textarea className="editthis input-lg" type='text' name='ingredients' id='ingredients'  onChange={this.handleUpdateChange} placeholder={this.state.openModelIngredients} value={this.state.ingredients}/>
+          <textarea className="editthis input-lg" type='text' name='ingredients' id='ingredients'  onChange={this.handleUpdateChange}  value={this.state.ingredients}/>
 
           <label className="label2">Directions:</label>
 
-            <textarea className="editthis input-lg" type='text' name='directions' onChange={this.handleUpdateChange} placeholder={this.state.openModelDirections} value={this.state.directions}/>
+            <textarea className="editthis input-lg" type='text' name='directions' onChange={this.handleUpdateChange}  value={this.state.directions}/>
 
             <label className="label2">Cook Time:</label>
 
-              <input className="editthis input-lg" type='number' name='directions' onChange={this.handleUpdateChange} placeholder={this.state.openModelCookTime} value={this.state.cookTime}/>
+              <input className="editthis input-lg" type='number' name='cookTime' onChange={this.handleUpdateChange}  value={this.state.cookTime}/>
 
               <label className="label2">Prep Time:</label>
 
-                <input className="editthis input-lg" type='number' name='directions' onChange={this.handleUpdateChange} placeholder={this.state.openModelPrepTime} value={this.state.prepTime}/>
+                <input className="editthis input-lg" type='number' name='prepTime' onChange={this.handleUpdateChange}  value={this.state.prepTime}/>
+                <br/>
+                <br/>
+                <button type="button" className="btn btn-primary btn-lg" onClick={() => this.updateThings(cookin)}>Save changes</button>
             </form>
 
 
         </Modal.Body>
         <Modal.Footer>
           <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal"onClick={this.handleClose}>Close</button>
-          <button type="button" className="btn btn-primary btn-lg" onClick={() => this.updateThings(cookin.id)}>Save changes</button>
+
           </Modal.Footer>
 
       </Modal>

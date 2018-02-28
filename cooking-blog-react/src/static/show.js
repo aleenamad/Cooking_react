@@ -26,7 +26,7 @@ class Show extends Component {
     this.handleDo = this.handleDo.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
+    this.handleShow = this.handleShow.bind(this);
     const cookinRef = firebase.database().ref('recipes');
     const cookin = {
       title: this.state.recipe,
@@ -88,14 +88,14 @@ class Show extends Component {
   }
 
 
-handleShow(cookin) {
+handleShow(id) {
     this.setState({
-      showModal: true,
-      openModelTitle: cookin.title,
-      openModelIngredients: cookin.ingredients,
-      openModelDirections: cookin.directions,
-      openModelCookTime: cookin.cookTime,
-      openModelPrepTime: cookin.prepTime,
+      showModal: id,
+      // openModelTitle: cookin.title,
+      // openModelIngredients: cookin.ingredients,
+      // openModelDirections: cookin.directions,
+      // openModelCookTime: cookin.cookTime,
+      // openModelPrepTime: cookin.prepTime,
     });
   }
 
@@ -170,22 +170,22 @@ handleShow(cookin) {
 
           <li className="yo">{cookin.title}</li>
         <button type="button" className="Details-button btn btn-primary btn-lg" onClick={ ()=>
-        this.handleShow(cookin)}>Details!</button>
+        this.handleShow(cookin.id)}>Details!</button>
 
 
-        <Modal show={this.state.showModal} onHide={this.handleClose}>
+        <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose}>
           <Modal.Header>
-            <Modal.Title>Description For: {this.state.openModelTitle}</Modal.Title>
+            <Modal.Title>Description For: {cookin.title}</Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <p className="here">Ingredients:</p>
-          <p className="ingred">{this.state.openModelIngredients}</p>
+          <p className="ingred">{cookin.ingredients}</p>
           <p className="here">Directions:</p>
-          <p className="directy">{this.state.openModelDirections}</p>
+          <p className="directy">{cookin.directions}</p>
           <p className="here">Cook Time:</p>
-          <p className="directy">{this.state.openModelCookTime} Minutes</p>
+          <p className="directy">{cookin.cookTime} Minutes</p>
           <p className="here">Prep Time:</p>
-          <p className="directy">{this.state.openModelPrepTime} Minutes</p>
+          <p className="directy">{cookin.prepTime} Minutes</p>
 
 
 
