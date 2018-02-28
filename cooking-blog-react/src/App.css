@@ -8,7 +8,20 @@ font-size: 40px;
 .modal {
   text-align: center;
 }
+.label10{
+  font-family: 'Abril Fatface', cursive;
+  text-align: center;
+  font-size: 45px;
+  padding-left: 40px;
 
+}
+.label9{
+  font-family: 'Abril Fatface', cursive;
+  text-align: center;
+  font-size: 45px;
+  padding-right: 25px;
+
+}
 @media screen and (min-width: 768px) {
   .modal:before {
     display: inline-block;

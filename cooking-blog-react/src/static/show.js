@@ -195,7 +195,7 @@ class Show extends Component {
         <button type="button" className="Details-button btn btn-primary btn-lg" onClick={ ()=>
         this.handleShow(cookin.id)}>Details!</button>
 
-        <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose}>
+        <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose} bsSize="large">
           <Modal.Header>
             <Modal.Title>Description For: {cookin.title}</Modal.Title>
           </Modal.Header>
@@ -221,9 +221,10 @@ class Show extends Component {
                            : <p>You must be logged in to comment.</p>
                            }
                            <br/>
-                           <p className="heres">Add Comment:</p>
+                           <p className="heres">Comment:</p>
                            <br/>
                           <textarea type="text" className="Comment-Box input-lg" name="comments"  onChange={this.handleTypeChange}  value={this.state.comments} />
+                          <br/>
 
                         <button className="btn btn-primary btn-lg">Add Comment</button>
                       </form>

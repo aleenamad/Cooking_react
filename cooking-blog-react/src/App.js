@@ -186,21 +186,21 @@ updateThings(cookin) {
 <div className="deleteBut">
   <div className="modal-container">
     <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin.id)}>Edit!</button>
-    <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose}>
+    <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose} bsSize="large" dialogClassName="custom-modal">
       <Modal.Header>
         <Modal.Title>Edit Recipe</Modal.Title>
       </Modal.Header>
         <Modal.Body>
           <form onSubmit={this.handleSubmit}>
-          <label className="label2">Title:</label>
-          <br/>
+          <label className="label10">Title:</label>
+
 
           <input type='text' class="input-lg" name='recipe' placeholder={cookin.title} onChange={this.handleUpdateChange}
           value={this.state.recipe}
           />
         <br/>
         <br/>
-          <label className="label2">Ingredients:</label>
+          <label className="label9">Ingredients:</label>
 
           <textarea className="editthis input-lg" type='text' placeholder={cookin.ingredients} name='ingredients' id='ingredients'  onChange={this.handleUpdateChange}  value={this.state.ingredients}/>
 
