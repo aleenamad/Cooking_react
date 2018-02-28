@@ -12,10 +12,7 @@ class AboutMe extends Component {
             <Header />
               <h1 className="name">Hi! I'm Nadia but my friends call me Gonads</h1>
               <br/>
-
               <h3>This is me, Gonads <br/><img src={require("./img/IMG_5531.JPG")}/></h3>
-
-
               </div>
             </div>
 

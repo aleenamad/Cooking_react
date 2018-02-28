@@ -2,12 +2,6 @@ import firebase, { auth, provider } from '../config/fire.js';
 import React, { Component } from 'react';
 import './header.css';
 
-
-
-
-
-
-
 class Header extends Component {
   constructor() {
     super();
@@ -17,8 +11,7 @@ class Header extends Component {
     this.login = this.login.bind(this); // <-- add this line
     this.logout = this.logout.bind(this); // <-- add this line
   }
-
-
+/////////Allows user to log in and out//////////
   logout() {
     auth.signOut()
       .then(() => {
@@ -26,7 +19,6 @@ class Header extends Component {
           user: null
         });
       });
-
 }
 login() {
   auth.signInWithPopup(provider)
@@ -38,8 +30,8 @@ login() {
   });
 });
 }
-
-
+/////////////////////////////////////////////////////////////
+//////////Mounting///////////////////
 componentDidMount() {
   auth.onAuthStateChanged((user) => {
       if (user) {
@@ -48,6 +40,7 @@ componentDidMount() {
     });
 
 }
+/////////////////////////////////////////////////////////
   render() {
     return (
 
@@ -79,7 +72,6 @@ componentDidMount() {
       <button onClick={this.login} className="btn btn-success btn-lg">Log In</button>
     }
 
-
       </ul>
       </div>
       {this.state.user ?
@@ -94,7 +86,6 @@ componentDidMount() {
     </div>
   }
 </div>
-
 
 
   );

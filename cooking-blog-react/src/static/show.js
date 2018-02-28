@@ -85,22 +85,31 @@ class Show extends Component {
       });
 
 }
+/////////////Handles Modal opening/closing //////////////////////////
   handleClose() {
     this.setState({ showModal: false });
   }
-  // handleCloses() {
-  //   this.setState({ showModal: false });
-  // }
-  handleTypeChange(e){
-    this.setState({
-      [e.target.name]: e.target.value
-    })
-  }
+  handleShow(id) {
+      this.setState({
+        showModal: id,
+      });
+    }
+
+///////////////////////////////////////////////////////////////////////////////////////////
+////////////////Handle toggle//////////////////////////////////////////////////////
   handleClick() {
     this.setState({
       show: !this.state.show
     });
   }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////// Handle typing and submitting to firebase//////////////////////////////////////////////////////
+  handleTypeChange(e){
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
   handleDo(e) {
     e.preventDefault();
     const commentsRef = firebase.database().ref('comments');
@@ -115,18 +124,8 @@ class Show extends Component {
       username: ''
     })
   }
-
-
-handleShow(id) {
-    this.setState({
-      showModal: id,
-
-    });
-  }
-
-
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////Mounting//////////////////////////////////////////////////////
   componentDidMount() {
     auth.onAuthStateChanged((user) => {
         if (user) {
@@ -149,10 +148,11 @@ handleShow(id) {
       });
     });
   }
-
+/////////////Search Function///////////////////////////
   updateSearch(event){
     this.setState({search: event.target.value.substr(0, 20)});
   }
+/////////////////////////////////////////////////////////////////////////////////
   render(){
     let filteredRecipes = this.state.items.filter(
       (cookin) => {
@@ -160,7 +160,6 @@ handleShow(id) {
       }
     );
     return(
-
 <div className="ShowAll">
 
 <header>
@@ -179,15 +178,8 @@ handleShow(id) {
 
   <form className="form">
     <label className="label3">Sort Through Recipes here:</label>
-
     <input className="search input-lg" type="text" aria-label="Search" onChange={this.updateSearch.bind(this)} value={this.state.search}/>
-
   </form>
-
-
-
-
-
 
   <hr/>
   <div className="showit">
@@ -203,7 +195,6 @@ handleShow(id) {
         <button type="button" className="Details-button btn btn-primary btn-lg" onClick={ ()=>
         this.handleShow(cookin.id)}>Details!</button>
 
-
         <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose}>
           <Modal.Header>
             <Modal.Title>Description For: {cookin.title}</Modal.Title>
@@ -218,6 +209,7 @@ handleShow(id) {
           <p className="here">Prep Time:</p>
           <p className="directy">{cookin.prepTime} Minutes</p>
 <hr/>
+
           <p className="here">Add A Comment:</p>
 
           <form onSubmit={this.handleDo}>
@@ -235,39 +227,24 @@ handleShow(id) {
 
                         <button className="btn btn-primary btn-lg">Add Comment</button>
                       </form>
-
-
           </Modal.Body>
           <Modal.Footer>
               <br/>
-
             <button type="button" className="btn btn-info btn-lg" data-dismiss="modal"onClick={this.handleClose}>Close</button>
-
           </Modal.Footer>
         </Modal>
-
-
             </div>
         )}
       )}
 
   </ul>
-
-
 <footer>
-
   <hr/>
   <h2>Click to View Comments</h2>
   <Comment />
-              </footer>
-
-
+</footer>
 
 </div>
-
-
-
-
     </div>
   );
   }

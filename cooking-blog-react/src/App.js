@@ -3,14 +3,10 @@ import { config } from './config/fire';
 import firebase from 'firebase/app';
 // import firebase, { auth, provider } from './firebase.js';
 import 'firebase/database';
-
 import './App.css';
 import Header from './static/header';
-// import UpdateableItem from './static/update';
-// import Modal from 'react-bootstrap-modal';
-
 import {Modal} from 'react-bootstrap';
-// import Button from 'react-bootstrap'
+
 
 
 class App extends Component {
@@ -25,47 +21,30 @@ class App extends Component {
       prepTime: '',
       items: [],
       user: null
-
-
-
-
-
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateChange = this.handleUpdateChange.bind(this);
-    // this.MoreDetails = this.MoreDetails.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeThings = this.removeThings.bind(this);
     this.updateThings = this.updateThings.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
-
-
   }
 
-
+/////////Modal open/close //////////////////////////////////////////////////////
   handleClose() {
     this.setState({ showModal: false });
   }
-
-
-
   handleShow(id) {
     this.setState({
       showModal: id,
-      // openModelTitle: cookin.title,
-      // openModelIngredients: cookin.ingredients,
-      // openModelDirections: cookin.directions,
-      // openModelCookTime: cookin.cookTime,
-      // openModelPrepTime: cookin.prepTime,
-
     });
   }
 
 
 
-
+/////////////////// Handles typing and updating to firebase ///////////////////////////
 
 handleChange(e){
   this.setState({
@@ -100,13 +79,13 @@ handleSubmit(e) {
   });
 
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////// Allows detail button to take you to other page ///////////////////////////
 moreDetails(){
-
     window.location.assign('/recipes');
 }
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////Mounting//////////////////////////////////////////////////////
 componentDidMount() {
 
   const cookinRef = firebase.database().ref('recipes');
@@ -128,17 +107,11 @@ componentDidMount() {
     });
   });
 }
-
-
-componentWillUnmount() {
-   this.cookinRef.off();
- }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////Update and remove things//////////////////////////////////////////////////////
 removeThings(cookinId) {
   const cookinRef = firebase.database().ref(`/recipes/${cookinId}`);
   cookinRef.remove();
 }
-
 
 updateThings(cookin) {
     const cookinRef = firebase.database().ref(`/recipes/${cookin.id}`);
@@ -149,10 +122,6 @@ updateThings(cookin) {
       cookTime: this.state.cookTime,
       prepTime: this.state.prepTime,
     };
-    /*updates['/recipes/'+ cookinId] = {
-      title: '',
-      ingredients: '',
-    }*/
     cookinRef.update(updates);
     this.handleClose();
     this.setState({
@@ -163,40 +132,30 @@ updateThings(cookin) {
       prepTime: '',
     });
   }
-
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   render() {
-
     return (
       <div className="App">
         <header>
           <Header />
-
         </header>
-
-
-
         <div className="container">
-
           <section className='add-item'>
             <form onSubmit={this.handleSubmit}>
             <br/>
               <h1 className="what">Create Your Recipe Here:</h1>
               <label>Title:</label>
-
-
               <input type='text' className="input-lg" name='recipe' id="title" onChange={this.handleChange} value={this.state.recipe}/>
             <br/>
             <br/>
               <label>Ingredients:</label>
 
+              <textarea type='text' className="input-lg" name='ingredients' id='ingredients' placeholder='Separate By Commas' onChange={this.handleChange}  value={this.state.ingredients}/>
 
-              <textarea type='text' className="input-lg" name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange}  value={this.state.ingredients}/>
-
-<br/>
+              <br/>
               <label>Directions:</label>
 
-                <textarea type='text' className="input-lg" name='directions' placeholder='Directions...' onChange={this.handleChange} value={this.state.directions}/>
+                <textarea type='text' className="input-lg" name='directions' onChange={this.handleChange} value={this.state.directions}/>
 
                 <br/>
                 <label>Cook Time:</label>
@@ -209,13 +168,12 @@ updateThings(cookin) {
                 <input type='number' className="input-lg" name='prepTime' placeholder="In Minutes" onChange={this.handleChange} value={this.state.prepTime}/>
               <br/>
               <br/>
-
-
               <button className="addb btn btn-success btn-lg">Add Recipe!</button>
             </form>
               </section>
               <hr/>
               <br/>
+{/* //////////////////Shows Title, edit, delete, details button from here down////////////////////////  */}
               <section className='display-recipes'>
                 <div className='wrapper'>
                   <ul>
@@ -223,21 +181,15 @@ updateThings(cookin) {
                       return(
                         <div className="bo">
                           <h1 key={cookin.id}></h1>
-
                           <h1 className="wassup">{cookin.title}</h1>
-
-
 
 <div className="deleteBut">
   <div className="modal-container">
     <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin.id)}>Edit!</button>
-
     <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose}>
-
       <Modal.Header>
         <Modal.Title>Edit Recipe</Modal.Title>
       </Modal.Header>
-
         <Modal.Body>
           <form onSubmit={this.handleSubmit}>
           <label className="label2">Title:</label>
@@ -259,15 +211,12 @@ updateThings(cookin) {
             <label className="label2">Cook Time:</label>
 
               <input className="editthis input-lg" type='number' name='cookTime' placeholder={cookin.cookTime} onChange={this.handleUpdateChange}  value={this.state.cookTime}/>
-
               <label className="label2">Prep Time:</label>
-
                 <input className="editthis input-lg" type='number' placeholder={cookin.prepTime} name='prepTime' onChange={this.handleUpdateChange}  value={this.state.prepTime}/>
                 <br/>
                 <br/>
                 <button type="button" className="btn btn-primary btn-lg" onClick={() => this.updateThings(cookin)}>Save changes</button>
             </form>
-
 
         </Modal.Body>
         <Modal.Footer>
@@ -278,27 +227,18 @@ updateThings(cookin) {
       </Modal>
 
 </div>
+            <button className="btn btn-primary btn-lg" onClick={this.moreDetails}>Details</button>
+            <button className="btn btn-danger btn-lg" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
+          </div>
 
-
-
-                          <button className="btn btn-primary btn-lg" onClick={this.moreDetails}>Details</button>
-                          <button className="btn btn-danger btn-lg" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
-                        </div>
-
-
-                        </div>
-                      )
-                    })}
-                  </ul>
-                </div>
-
-              </section>
-
-
-
-        </div>
-
+</div>
+                )
+              })}
+            </ul>
+          </div>
+        </section>
       </div>
+    </div>
     )
   }
 }
