@@ -33,7 +33,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateChange = this.handleUpdateChange.bind(this);
-    // this.MoreDetails = this.MoreDetails.bind(this);
+    this.MoreDetails = this.MoreDetails.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeThings = this.removeThings.bind(this);
     this.updateThings = this.updateThings.bind(this);
@@ -269,7 +269,7 @@ updateThings(cookin) {
 
         </Modal.Body>
         <Modal.Footer>
-          <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal"onClick={this.handleClose}>Close</button>
+          <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal" onClick={this.handleClose}>Close</button>
 
           </Modal.Footer>
 
