@@ -186,7 +186,7 @@ updateThings(cookin) {
 <div className="deleteBut">
   <div className="modal-container">
     <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin.id)}>Edit!</button>
-    <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose} bsSize="large" dialogClassName="custom-modal">
+    <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose} bsSize="large">
       <Modal.Header>
         <Modal.Title>Edit Recipe</Modal.Title>
       </Modal.Header>
