@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import 'firebase/database';
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import {Modal} from 'react-bootstrap';
 import './comments.css';
 import ToggleDisplay from 'react-toggle-display';
-
+import firebase, { auth, provider } from '../config/fire.js';
 
 class Comment extends Component {
   constructor(){
@@ -14,7 +14,8 @@ class Comment extends Component {
       showModal: false,
       comments: '',
       things: [],
-      show: false
+      show: false,
+      user: null
     }
 
 
@@ -23,8 +24,11 @@ class Comment extends Component {
     this.removeComment = this.removeComment.bind(this);
     this.handleIt = this.handleIt.bind(this);
     this.closeIt = this.closeIt.bind(this);
+  
 
   }
+
+
 
 
 
@@ -82,6 +86,11 @@ closeIt() {
 
 
   componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({ user });
+        }
+      });
     const commentsRef = firebase.database().ref('comments');
     commentsRef.on('value', (snapshot) => {
       let things = snapshot.val();
@@ -89,7 +98,8 @@ closeIt() {
       for (let wall in things) {
         newState.push({
           id: wall,
-          comments: things[wall].comments
+          comments: things[wall].comments,
+          user: things[wall].user
         });
       }
       this.setState({
@@ -103,6 +113,7 @@ return (
 
 
   <div className="comments-show">
+
     <button type="button" onClick={ ()=>
   this.handleClick()} className="btn btn-success btn-lg">Comments!</button>
 
@@ -119,6 +130,9 @@ return (
 
 
           <ToggleDisplay show={this.state.show}>
+            <br/>
+            <h4 className="person">Commented by: {wall.user}</h4>
+            <br/>
             <div className="containerComment">
 
               <li className="specificComment">{wall.comments}</li>
@@ -133,8 +147,9 @@ return (
                 </Modal.Header>
                 <Modal.Body>
                   <form onSubmit={this.handleDo}>
+                  <br/>
 
-                    <textarea type="text" className="Comment-Box input-lg" name="comments" placeholder="Edit comment here..." onChange={this.handleTypeChange} value={this.state.comments} />
+                    <textarea type="text" className="Comment-Box input-lg" name="comments" placeholder={wall.comments} onChange={this.handleTypeChange} value={this.state.comments} />
                     <button type="button" className="btn btn-primary btn-lg" onClick={() => this.updateComment(wall)}>Update Comment!</button>
 
                   </form>

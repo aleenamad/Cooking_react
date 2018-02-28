@@ -24,6 +24,7 @@ class App extends Component {
       cookTime:'',
       prepTime: '',
       items: [],
+      user: null
 
 
 
@@ -33,7 +34,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateChange = this.handleUpdateChange.bind(this);
-    this.MoreDetails = this.MoreDetails.bind(this);
+    // this.MoreDetails = this.MoreDetails.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeThings = this.removeThings.bind(this);
     this.updateThings = this.updateThings.bind(this);
@@ -174,6 +175,7 @@ updateThings(cookin) {
         </header>
 
 
+
         <div className="container">
 
           <section className='add-item'>
@@ -241,26 +243,26 @@ updateThings(cookin) {
           <label className="label2">Title:</label>
           <br/>
 
-          <input type='text' class="input-lg" name='recipe' onChange={this.handleUpdateChange}
+          <input type='text' class="input-lg" name='recipe' placeholder={cookin.title} onChange={this.handleUpdateChange}
           value={this.state.recipe}
           />
         <br/>
         <br/>
           <label className="label2">Ingredients:</label>
 
-          <textarea className="editthis input-lg" type='text' name='ingredients' id='ingredients'  onChange={this.handleUpdateChange}  value={this.state.ingredients}/>
+          <textarea className="editthis input-lg" type='text' placeholder={cookin.ingredients} name='ingredients' id='ingredients'  onChange={this.handleUpdateChange}  value={this.state.ingredients}/>
 
           <label className="label2">Directions:</label>
 
-            <textarea className="editthis input-lg" type='text' name='directions' onChange={this.handleUpdateChange}  value={this.state.directions}/>
+            <textarea className="editthis input-lg" type='text' placeholder={cookin.directions} name='directions' onChange={this.handleUpdateChange}  value={this.state.directions}/>
 
             <label className="label2">Cook Time:</label>
 
-              <input className="editthis input-lg" type='number' name='cookTime' onChange={this.handleUpdateChange}  value={this.state.cookTime}/>
+              <input className="editthis input-lg" type='number' name='cookTime' placeholder={cookin.cookTime} onChange={this.handleUpdateChange}  value={this.state.cookTime}/>
 
               <label className="label2">Prep Time:</label>
 
-                <input className="editthis input-lg" type='number' name='prepTime' onChange={this.handleUpdateChange}  value={this.state.prepTime}/>
+                <input className="editthis input-lg" type='number' placeholder={cookin.prepTime} name='prepTime' onChange={this.handleUpdateChange}  value={this.state.prepTime}/>
                 <br/>
                 <br/>
                 <button type="button" className="btn btn-primary btn-lg" onClick={() => this.updateThings(cookin)}>Save changes</button>
@@ -269,7 +271,7 @@ updateThings(cookin) {
 
         </Modal.Body>
         <Modal.Footer>
-          <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal" onClick={this.handleClose}>Close</button>
+          <button type="button" className="btn btn-info btn-lg" data-dismiss="modal" onClick={this.handleClose}>Close</button>
 
           </Modal.Footer>
 

@@ -4,9 +4,10 @@ import Header from './header';
 import Comment from './comments';
 import './show.css';
 import 'firebase/database';
-import firebase from 'firebase/app';
+// import firebase from 'firebase/app';
 import {Modal} from 'react-bootstrap';
 import ToggleDisplay from 'react-toggle-display';
+import firebase, { auth, provider } from '../config/fire.js';
 
 class Show extends Component {
   constructor(){
@@ -21,9 +22,14 @@ class Show extends Component {
       prepTime: '',
       items: [],
       search: '',
-      show: false
+      show: false,
+      username: '',
+      user: null,
+      things: []
     }
     this.handleDo = this.handleDo.bind(this);
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
     this.handleTypeChange = this.handleTypeChange.bind(this);
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
@@ -59,6 +65,26 @@ class Show extends Component {
 
 
   }
+  login() {
+    auth.signInWithPopup(provider)
+    .then((result) => {
+      console.log("hey");
+    const user = result.user;
+    this.setState({
+      user
+    });
+  });
+  }
+
+  logout() {
+    auth.signOut()
+      .then(() => {
+        this.setState({
+          user: null
+        });
+      });
+
+}
   handleClose() {
     this.setState({ showModal: false });
   }
@@ -79,11 +105,14 @@ class Show extends Component {
     e.preventDefault();
     const commentsRef = firebase.database().ref('comments');
     const wall = {
-      comments: this.state.comments
+      comments: this.state.comments,
+      user: this.state.user.displayName || this.state.user.email
     }
+    this.handleClose();
     commentsRef.push(wall);
     this.setState({
-      comments: ''
+      comments: '',
+      username: ''
     })
   }
 
@@ -91,11 +120,7 @@ class Show extends Component {
 handleShow(id) {
     this.setState({
       showModal: id,
-      // openModelTitle: cookin.title,
-      // openModelIngredients: cookin.ingredients,
-      // openModelDirections: cookin.directions,
-      // openModelCookTime: cookin.cookTime,
-      // openModelPrepTime: cookin.prepTime,
+
     });
   }
 
@@ -103,6 +128,11 @@ handleShow(id) {
 
 
   componentDidMount() {
+    auth.onAuthStateChanged((user) => {
+        if (user) {
+          this.setState({ user });
+        }
+      });
     const commentsRef = firebase.database().ref('comments');
     commentsRef.on('value', (snapshot) => {
       let things = snapshot.val();
@@ -110,7 +140,8 @@ handleShow(id) {
       for (let wall in things) {
         newState.push({
           id: wall,
-          comments: things[wall].comments
+          comments: things[wall].comments,
+          user: things[wall].comments,
         });
       }
       this.setState({
@@ -140,7 +171,7 @@ handleShow(id) {
 <div className="container4">
 
 <h1>All the Recipes:</h1>
-<h2>Add A Comment Below</h2>
+
 
 <br/>
 </div>
@@ -186,18 +217,36 @@ handleShow(id) {
           <p className="directy">{cookin.cookTime} Minutes</p>
           <p className="here">Prep Time:</p>
           <p className="directy">{cookin.prepTime} Minutes</p>
+<hr/>
+          <p className="here">Add A Comment:</p>
 
+          <form onSubmit={this.handleDo}>
+            <p className="heres">Name:</p>
+            <br/>
+            {this.state.user ?
+
+                           <input type="text" className="input-sm" name="username" value={this.state.user.displayName || this.state.user.email} />
+                           : <p>You must be logged in to comment.</p>
+                           }
+                           <br/>
+                           <p className="heres">Add Comment:</p>
+                           <br/>
+                          <textarea type="text" className="Comment-Box input-lg" name="comments"  onChange={this.handleTypeChange}  value={this.state.comments} />
+
+                        <button className="btn btn-primary btn-lg">Add Comment</button>
+                      </form>
 
 
           </Modal.Body>
           <Modal.Footer>
+              <br/>
 
-            <button type="button" className="btn btn-secondary btn-lg" data-dismiss="modal"onClick={this.handleClose}>Close</button>
+            <button type="button" className="btn btn-info btn-lg" data-dismiss="modal"onClick={this.handleClose}>Close</button>
 
           </Modal.Footer>
         </Modal>
 
-          <hr/>
+
             </div>
         )}
       )}
@@ -207,17 +256,6 @@ handleShow(id) {
 
 <footer>
 
-
-<h2>Click To Add A Comment</h2>
-  <button type="button" onClick={ ()=>
-  this.handleClick()} className="btn btn-success btn-lg">Add!</button>
-  <ToggleDisplay show={this.state.show}>
-    <form onSubmit={this.handleDo}>
-                    <textarea type="text" className="Comment-Box input-lg" name="comments" placeholder="Add comment here..." onChange={this.handleTypeChange} value={this.state.comments} />
-                  <br/>
-                  <button className="btn btn-primary btn-lg">Add Comment</button>
-                </form>
-  </ToggleDisplay>
   <hr/>
   <h2>Click to View Comments</h2>
   <Comment />

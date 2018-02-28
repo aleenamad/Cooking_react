@@ -42,10 +42,11 @@ login() {
 
 componentDidMount() {
   auth.onAuthStateChanged((user) => {
-    if (user) {
-      this.setState({ user });
-    }
-  });
+      if (user) {
+        this.setState({ user });
+      }
+    });
+
 }
   render() {
     return (
@@ -89,7 +90,7 @@ componentDidMount() {
     </div>
     :
     <div className='wrappers'>
-      <p>You must be logged in to see the potluck list and submit to it.</p>
+      <p>You must be logged in to submit to recipes.</p>
     </div>
   }
 </div>
