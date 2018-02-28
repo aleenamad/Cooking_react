@@ -27,6 +27,7 @@ h1{
   text-align: center;
   /* padding-right: 100px; */
 
+
 p{
   font-family: 'Abril Fatface', cursive;
 }
@@ -37,7 +38,13 @@ p{
   text-align: center;
 
 }
+.Details-button{
 
+}
+footer{
+  text-align: center;
+  padding-left: 43px;
+}
 .boya{
   text-align: center;
   /* border-bottom: 2px solid black;
@@ -50,13 +57,16 @@ p{
 .here{
   font-size: 30px;
 }
-
+.Comment-Box{
+  height: 100px;
+  width: 400px;
+}
 .yo{
   list-style: decimal;
   list-style-position: inside;
   font-size: 40px;
   text-align: center;
-  padding-right: 30px;
+  /* padding-right: 30px; */
   /* text-decoration: underline; */
 }
 .directy{

@@ -20,6 +20,7 @@ class App extends Component {
       recipe: '',
       ingredients: '',
       directions: '',
+
       items: [],
 
 
@@ -30,7 +31,7 @@ class App extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleUpdateChange = this.handleUpdateChange.bind(this);
-
+    // this.MoreDetails = this.MoreDetails.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.removeThings = this.removeThings.bind(this);
     this.updateThings = this.updateThings.bind(this);
@@ -89,6 +90,10 @@ handleSubmit(e) {
   });
 }
 
+moreDetails(){
+
+    window.location.assign('/recipes');
+}
 
 
 componentDidMount() {
@@ -146,18 +151,18 @@ updateThings(cookinId, items) {
               <label>Title:</label>
 
 
-              <input type='text' name='recipe' id="title" onChange={this.handleChange} value={this.state.recipe}/>
+              <input type='text' className="input-lg" name='recipe' id="title" onChange={this.handleChange} value={this.state.recipe}/>
             <br/>
             <br/>
               <label>Ingredients:</label>
 
 
-              <textarea type='text' name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange || this.separateComma}  value={this.state.ingredients}/>
+              <textarea type='text' className="input-lg" name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange || this.separateComma}  value={this.state.ingredients}/>
 
 
               <label>Directions:</label>
 
-                <textarea type='text' name='directions' placeholder='Directions...' onChange={this.handleChange} value={this.state.directions}/>
+                <textarea type='text' className="input-lg" name='directions' placeholder='Directions...' onChange={this.handleChange} value={this.state.directions}/>
 
                 <br/>
 
@@ -220,7 +225,7 @@ updateThings(cookinId, items) {
 
 
 
-
+                          <button className="btn btn-primary btn-lg" onClick={this.moreDetails}>Details</button>
                           <button className="btn btn-danger btn-lg" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
                         </div>
 
