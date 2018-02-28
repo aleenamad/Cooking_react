@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './home2.css';
 import Header from './header';
+import {Carousel} from 'react-bootstrap';
 
 
 class Home2 extends Component {
@@ -13,18 +14,37 @@ class Home2 extends Component {
           <div className="theBody">
             <Header />
               <h1 className="hey">Nadia's Cooking Blog Adventures</h1>
-              <br/>
-              <br/>
-              <div className="container3">
+              <Carousel className="ccc">
+              <Carousel.Item>
+                <img className="cake img-responsive center-block" src={require('./img/cake.JPG')} />
+                <Carousel.Caption>
+                  <h3>Drake Farewell Cake</h3>
+                  {/* <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p> */}
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img  className="fruitcake img-responsive center-block" src={require('./img/fruitcake.jpg')} />
+                <Carousel.Caption>
+                  <h3>A Family Fruitcake</h3>
+                  {/* <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p> */}
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img  className="cupcake img-responsive center-block" src={require('./img/cupcake.jpg')} />
+                <Carousel.Caption>
+                  <h3>Some Moist Cupcakes</h3>
+                  {/* <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
+                </Carousel.Caption>
+              </Carousel.Item>
+              <Carousel.Item>
+                <img className="nadiacake img-responsive center-block" src={require('./img/nadiawcake.jpg')} />
+                <Carousel.Caption>
+                  <h3>Me With A Cake</h3>
+                  {/* <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p> */}
+                </Carousel.Caption>
+              </Carousel.Item>
+            </Carousel>
 
-            <h3>Drake Farewell Cake <br/> <img className="cake"  src={require('./img/cake.JPG')}/></h3>
-
-                <h3>A Family FruitCake <br/> <img className="fruitcake" src={require('./img/fruitcake.jpg')}/></h3>
-
-              <h3>Me With A Cake<br/><img className="nadiacake" src={require('./img/nadiawcake.jpg')}/></h3>
-
-            <h3>Some Moist Cupcakes<br/>  <img className="cupcake" src={require('./img/cupcake.jpg')}/></h3>
-            </div>
 
 
 

@@ -172,20 +172,20 @@ updateThings(cookinId, items) {
 
               <textarea type='text' className="input-lg" name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange}  value={this.state.ingredients}/>
 
-
+<br/>
               <label>Directions:</label>
 
                 <textarea type='text' className="input-lg" name='directions' placeholder='Directions...' onChange={this.handleChange} value={this.state.directions}/>
 
                 <br/>
-                <label>Cook Time in Minutes:</label>
+                <label>Cook Time:</label>
 
-                <input type='number' className="input-lg" name='cookTime'  onChange={this.handleChange} value={this.state.cookTime}/>
+                <input type='number' className="input-lg" name='cookTime' placeholder="In Minutes" onChange={this.handleChange} value={this.state.cookTime}/>
 
                 <br/>
-                <label>Prep Time in Minutes:</label>
+                <label>Prep Time:</label>
 
-                <input type='number' className="input-lg" name='prepTime'  onChange={this.handleChange} value={this.state.prepTime}/>
+                <input type='number' className="input-lg" name='prepTime' placeholder="In Minutes" onChange={this.handleChange} value={this.state.prepTime}/>
               <br/>
               <br/>
 

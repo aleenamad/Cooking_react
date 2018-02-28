@@ -14,7 +14,7 @@ font-size: 40px;
     display: inline-block;
     vertical-align: middle;
     content: " ";
-    height: 130%;
+    height: 140%;
   }
 }
 .addb{
@@ -50,6 +50,7 @@ font-size: 40px;
   padding-right: 150px;
 
 
+
 }
 
 
@@ -66,7 +67,7 @@ font-size: 40px;
   word-wrap: break-word;
 }
 label{
-    font-size: 50px;
+    font-size: 35px;
     text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
                  10px 20px 5px rgba(0,0,0,0.05),
                  -10px 20px 5px rgba(0,0,0,0.05);
@@ -90,7 +91,7 @@ label{
 
 }
 textarea{
-  height: 75px;
+  height: 40px;
   width: 500px;
 
 

@@ -99,6 +99,7 @@ return (
 
           <ToggleDisplay show={this.state.show}>
             <div className="containerComment">
+              
               <li className="specificComment">{wall.comments}</li>
               <button onClick={() => this.removeComment(wall.id)} className="remove btn-sm btn-danger">(X)</button>
 
