@@ -3,6 +3,7 @@ import { config } from './config/fire';
 import firebase from 'firebase/app';
 // import firebase, { auth, provider } from './firebase.js';
 import 'firebase/database';
+
 import './App.css';
 import Header from './static/header';
 // import UpdateableItem from './static/update';
@@ -20,7 +21,6 @@ class App extends Component {
       recipe: '',
       ingredients: '',
       directions: '',
-
       items: [],
 
 
@@ -77,6 +77,7 @@ handleUpdateChange(a){
 handleSubmit(e) {
   e.preventDefault();
   const cookinRef = firebase.database().ref('recipes');
+
   const cookin = {
     title: this.state.recipe,
     ingredients: this.state.ingredients,
@@ -88,6 +89,7 @@ handleSubmit(e) {
     ingredients: '',
     directions: ''
   });
+
 }
 
 moreDetails(){
@@ -117,9 +119,9 @@ componentDidMount() {
 }
 
 
-componentWillUnmount() {
-   this.cookinRef.off();
- }
+// componentWillUnmount() {
+//    this.cookinRef.off();
+//  }
 
 removeThings(cookinId) {
   const cookinRef = firebase.database().ref(`/recipes/${cookinId}`);
@@ -134,6 +136,7 @@ updateThings(cookinId, items) {
 
 
   render() {
+
     return (
       <div className="App">
         <header>
@@ -157,7 +160,7 @@ updateThings(cookinId, items) {
               <label>Ingredients:</label>
 
 
-              <textarea type='text' className="input-lg" name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange || this.separateComma}  value={this.state.ingredients}/>
+              <textarea type='text' className="input-lg" name='ingredients' id='ingredients' placeholder='Separate by commas' onChange={this.handleChange}  value={this.state.ingredients.split(',')}/>
 
 
               <label>Directions:</label>
@@ -166,7 +169,7 @@ updateThings(cookinId, items) {
 
                 <br/>
 
-              <button className="btn btn-success btn-lg">Add Recipe!</button>
+              <button className="addb btn btn-success btn-lg">Add Recipe!</button>
             </form>
               </section>
               <hr/>
@@ -198,18 +201,18 @@ updateThings(cookinId, items) {
           <label className="label2">Title:</label>
           <br/>
 
-          <input type='text' class="input-group input-group-lg" name='recipe' onChange={this.handleUpdateChange} placeholder={this.state.openModelTitle}
+          <input type='text' class="input-lg" name='recipe' onChange={this.handleUpdateChange} placeholder={this.state.openModelTitle}
           value={this.state.recipe}
           />
         <br/>
         <br/>
           <label className="label2">Ingredients:</label>
 
-          <textarea className="editthis" type='text' name='ingredients' id='ingredients'  onChange={this.handleUpdateChange} placeholder={this.state.openModelIngredients} value={this.state.ingredients}/>
+          <textarea className="editthis input-lg" type='text' name='ingredients' id='ingredients'  onChange={this.handleUpdateChange} placeholder={this.state.openModelIngredients} value={this.state.ingredients}/>
 
           <label className="label2">Directions:</label>
 
-            <textarea className="editthis" type='text' name='directions' onChange={this.handleUpdateChange} placeholder={this.state.openModelDirections} value={this.state.directions}/>
+            <textarea className="editthis input-lg" type='text' name='directions' onChange={this.handleUpdateChange} placeholder={this.state.openModelDirections} value={this.state.directions}/>
             </form>
 
 
