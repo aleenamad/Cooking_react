@@ -17,6 +17,8 @@ class Show extends Component {
       recipe: '',
       ingredients: '',
       directions: '',
+      cookTime:'',
+      prepTime: '',
       items: [],
       search: '',
       show: false
@@ -30,6 +32,8 @@ class Show extends Component {
       title: this.state.recipe,
       ingredients: this.state.ingredients,
       directions: this.state.directions,
+      cookTime: this.state.cookTime,
+      prepTime: this.state.prepTime,
 
     }
 
@@ -42,6 +46,8 @@ class Show extends Component {
             title: items[cookin].title,
             ingredients: items[cookin].ingredients,
             directions: items[cookin].directions,
+            cookTime: items[cookin].cookTime,
+            prepTime: items[cookin].prepTime,
 
           });
         }
@@ -88,6 +94,8 @@ handleShow(cookin) {
       openModelTitle: cookin.title,
       openModelIngredients: cookin.ingredients,
       openModelDirections: cookin.directions,
+      openModelCookTime: cookin.cookTime,
+      openModelPrepTime: cookin.prepTime,
     });
   }
 
@@ -174,6 +182,10 @@ handleShow(cookin) {
           <p className="ingred">{this.state.openModelIngredients}</p>
           <p className="here">Directions:</p>
           <p className="directy">{this.state.openModelDirections}</p>
+          <p className="here">Cook Time:</p>
+          <p className="directy">{this.state.openModelCookTime} Minutes</p>
+          <p className="here">Prep Time:</p>
+          <p className="directy">{this.state.openModelPrepTime} Minutes</p>
 
 
 
