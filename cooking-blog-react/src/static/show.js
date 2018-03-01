@@ -140,7 +140,7 @@ class Show extends Component {
         newState.push({
           id: wall,
           comments: things[wall].comments,
-          user: things[wall].comments,
+          user: things[wall].user,
         });
       }
       this.setState({
@@ -201,7 +201,9 @@ class Show extends Component {
           </Modal.Header>
           <Modal.Body>
           <p className="here">Ingredients:</p>
-          <p className="ingred">{cookin.ingredients}</p>
+          <p className="ingred">{cookin.ingredients.split(',').map( ingr => (
+            <li>{ingr}</li>
+          ) )}</p>
           <p className="here">Directions:</p>
           <p className="directy">{cookin.directions}</p>
           <p className="here">Cook Time:</p>
@@ -211,15 +213,16 @@ class Show extends Component {
 <hr/>
 
           <p className="here">Add A Comment:</p>
+          {this.state.user ?
+            <div>
 
           <form onSubmit={this.handleDo}>
             <p className="heres">Name:</p>
             <br/>
-            {this.state.user ?
+
 
                            <input type="text" className="input-sm" name="username" value={this.state.user.displayName || this.state.user.email} />
-                           : <p>You must be logged in to comment.</p>
-                           }
+
                            <br/>
                            <p className="heres">Comment:</p>
                            <br/>
@@ -228,6 +231,9 @@ class Show extends Component {
 
                         <button className="btn btn-primary btn-lg">Add Comment</button>
                       </form>
+                      </div>
+                      : <p className="directy">You must be logged in to add a comment.</p>
+                      }
           </Modal.Body>
           <Modal.Footer>
               <br/>

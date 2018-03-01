@@ -183,7 +183,7 @@ updateThings(cookin) {
                           <h1 key={cookin.id}></h1>
                           <h1 className="wassup">{cookin.title}</h1>
 
-<div className="deleteBut">
+<div className="But">
   <div className="modal-container">
     <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin.id)}>Edit!</button>
     <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose} bsSize="large">
@@ -227,7 +227,7 @@ updateThings(cookin) {
       </Modal>
 
 </div>
-            <button className="btn btn-primary btn-lg" onClick={this.moreDetails}>Details</button>
+            <button className="btn btn-primary btn-lg" onClick={this.moreDetails}>All Recipes!</button>
             <button className="btn btn-danger btn-lg" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
           </div>
 

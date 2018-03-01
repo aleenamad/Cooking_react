@@ -58,8 +58,10 @@ font-size: 40px;
 .container{
   text-align: center;
   font-family: 'Abril Fatface', cursive;
-  /* display: flex; */
-  justify-content: space-around;
+  display: flex;
+  align-items: flex-start;
+
+
   padding-right: 150px;
 
 
@@ -67,7 +69,7 @@ font-size: 40px;
 }
 
 
-.deleteBut{
+.But{
   /* padding-left: 10px; */
   display: flex;
   justify-content: center;

@@ -1,5 +1,7 @@
-import firebase from 'firebase';
+// import firebase from 'firebase';
+import * as firebase from 'firebase';
 import key from './key.js';
+
 
 
 const config = {
@@ -11,7 +13,7 @@ const config = {
     messagingSenderId: "901701697829"
   };
 firebase.initializeApp(config);
-
+firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
 export const provider = new firebase.auth.GoogleAuthProvider();
 
 provider.addScope('https://www.googleapis.com/auth/plus.login');

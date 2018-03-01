@@ -23,13 +23,15 @@ class Header extends Component {
 login() {
   auth.signInWithPopup(provider)
   .then((result) => {
-    console.log("hey");
+    console.log("hey, you're loggin!");
 	const user = result.user;
   this.setState({
     user
   });
 });
 }
+
+
 /////////////////////////////////////////////////////////////
 //////////Mounting///////////////////
 componentDidMount() {
@@ -38,6 +40,7 @@ componentDidMount() {
         this.setState({ user });
       }
     });
+
 
 }
 /////////////////////////////////////////////////////////
@@ -82,7 +85,7 @@ componentDidMount() {
     </div>
     :
     <div className='wrappers'>
-      <p>You must be logged in to submit to recipes.</p>
+      {/* //////just need this here////////// */}
     </div>
   }
 </div>
