@@ -13,10 +13,13 @@ const config = {
     messagingSenderId: "901701697829"
   };
 firebase.initializeApp(config);
-firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+
 export const provider = new firebase.auth.GoogleAuthProvider();
 
 provider.addScope('https://www.googleapis.com/auth/plus.login');
+provider.setCustomParameters({
+   'prompt': 'select_account'
+});
 
 export const auth = firebase.auth();
 export const database = firebase.database();
