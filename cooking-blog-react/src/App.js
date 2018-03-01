@@ -180,7 +180,7 @@ updateThings(cookin) {
             <br/>
               <label>Ingredients:</label>
 
-              <textarea type='text' className="input-lg" name='ingredients' id='ingredients' placeholder='Separate By Commas' onChange={this.handleChange}  value={this.state.ingredients}/>
+              <textarea type='text' className="input-lg" name='ingredients' placeholder='Separate By Commas' onChange={this.handleChange}  value={this.state.ingredients}/>
 
               <br/>
               <label>Directions:</label>
