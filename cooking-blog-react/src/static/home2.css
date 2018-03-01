@@ -6,9 +6,7 @@ justify-content: space-around;
 color: #8DB8E8;
 font-family: 'Abril Fatface', cursive;
 }
-.theBody{
-  background-color: #F5F5F5;
-}
+
 .hey{
   font-size: 60px;
   text-shadow: 0px 15px 5px rgba(0,0,0,0.1),
@@ -17,8 +15,8 @@ font-family: 'Abril Fatface', cursive;
 
 }
 #cake{
-  height: 500px;
-  width: 500px;
+  height: 350px;
+  width: 350px;
 }
 
 
@@ -30,21 +28,21 @@ h3{
 }
 
 #fruitcake{
-  height: 500px;
-  width: 500px;
+  height: 350px;
+  width: 350px;
 
 
 
 }
 #nadiacake{
-  height: 500px;
-  width: 500px;
+  height: 350px;
+  width: 350px;
 
 }
 
 #cupcake{
-  height: 500px;
-  width: 500px;
+  height: 350px;
+  width: 350px;
 
 
 }

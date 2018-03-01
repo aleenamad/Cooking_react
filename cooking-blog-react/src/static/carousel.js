@@ -12,22 +12,28 @@ class Slick extends React.Component {
       slidesToShow: 3,
       slidesToScroll: 1,
       autoplay: true,
-      autoplaySpeed: 2000
+      autoplaySpeed: 2000,
+      pauseOnHover: true,
+      rtl: true,
     };
     return (
 
         <Slider {...settings}>
           <div>
-            <img className="img-responsive center-block" id="cake" src={require('./img/cake.JPG')} />
+            <img id="cake" src={require('./img/cake.JPG')} />
+            <p className="clabel">Drake Farwell Cake</p>
           </div>
           <div>
-            <img  className="img-responsive center-block" id="fruitcake" src={require('./img/fruitcake.jpg')} />
+            <img  id="fruitcake" src={require('./img/fruitcake.jpg')} />
+            <p className="clabel">A Family Fruitcake</p>
           </div>
           <div>
-          <img  className="img-responsive center-block" id="cupcake" src={require('./img/cupcake.jpg')} />
+          <img  id="cupcake" src={require('./img/cupcake.jpg')} />
+          <p className="clabel">A Moist Cupcake</p>
           </div>
           <div>
-            <img className="img-responsive center-block" id="nadiacake" src={require('./img/nadiawcake.jpg')} />
+            <img id="nadiacake" src={require('./img/nadiawcake.jpg')} />
+            <p className="clabel">Me With A Cake</p>
           </div>
         </Slider>
 
