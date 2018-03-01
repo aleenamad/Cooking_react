@@ -16,11 +16,9 @@ font-family: 'Abril Fatface', cursive;
                  -10px 20px 5px rgba(0,0,0,0.05);
 
 }
-.cake{
-  text-align: center;
-  height: 300px;
-  width: 300px;
-
+#cake{
+  height: 500px;
+  width: 500px;
 }
 .ccc{
   display: flex;
@@ -34,25 +32,23 @@ h3{
   font-size: 20px;
 }
 
-.fruitcake{
-  height: 300px;
-  width: 300px;
-text-align: center;
-display: flex;
-align-content: center;
+#fruitcake{
+  height: 500px;
+  width: 500px;
+
 
 
 }
-.nadiacake{
-  height: 300px;
-  width: 300px;
+#nadiacake{
+  height: 500px;
+  width: 500px;
 
 }
 
-.cupcake{
-  height: 300px;
-  width: 300px;
-  text-align: center;
+#cupcake{
+  height: 500px;
+  width: 500px;
+
 
 }
 
