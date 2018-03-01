@@ -12,7 +12,9 @@ class Header extends Component {
     this.logout = this.logout.bind(this); // <-- add this line
   }
 /////////Allows user to log in and out//////////
-  logout() {
+  logout(e) {
+    window.location.reload();
+      e.preventDefault();
     auth.signOut()
       .then(() => {
         this.setState({
@@ -20,7 +22,8 @@ class Header extends Component {
         });
       });
 }
-login() {
+login(e) {
+  e.preventDefault();
   auth.signInWithPopup(provider)
   .then((result) => {
     console.log("hey, you're loggin!");
@@ -62,34 +65,62 @@ componentDidMount() {
       <li className="nav-item">
         <a className="nav-link active" href="/Recipes">Recipes</a>
         </li>
+        {this.state.user?
         <li className="nav-item">
           <a className="nav-link" href="/Create">Create a Recipe</a>
         </li>
+        :
+        <li className="nav-item">
+          <a className="nav-link" href="#">Log In To Create a Recipe</a>
+        </li>
+      }
         <li className="nav-item">
           <a className="nav-link" href="/AboutMe">About Me</a>
         </li>
-
-        {this.state.user ?
-      <button onClick={this.logout} className="btn btn-success btn-lg">Log Out</button>
-      :
-      <button onClick={this.login} className="btn btn-success btn-lg">Log In</button>
-    }
-
-      </ul>
-      </div>
-      {this.state.user ?
-    <div>
-      <div className='user-profile'>
-        <img src={this.state.user.photoURL} />
-      </div>
-    </div>
-    :
-    <div className='wrappers'>
-      {/* //////just need this here////////// */}
-    </div>
-  }
+        {this.state.user?
+          <div>
+          <div>
+              <li className="nav-item">
+                <h3 className="hello">Welcome {this.state.user.displayName}!</h3>
+            </li>
+          </div>
 </div>
+          :
+          null
+        }
+        {this.state.user?
+          <div>
+          <div className='user-profile'>
+              <li className="nav-item">
+                <figure>
+                <div className='user-profile'>
+            <img src={this.state.user.photoURL}/>
+            </div>
+            </figure>
 
+            </li>
+          </div>
+</div>
+          :
+          <p className="log">Click to Login</p>
+
+        }
+
+    {this.state.user?
+      <li className="nav-item">
+<button onClick={this.logout} type="submit" className="btn btn-danger navbar-btn btn-lg">Log Out!</button>
+</li>
+
+
+      :
+
+      <button onClick={this.login} className="btn btn-success navbar-btn btn-lg">Log In!</button>
+
+    }
+      </ul>
+
+</div>
+</div>
 
   );
 }

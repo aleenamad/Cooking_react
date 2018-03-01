@@ -4,7 +4,6 @@ import Header from './header';
 import Comment from './comments';
 import './show.css';
 import 'firebase/database';
-// import firebase from 'firebase/app';
 import {Modal} from 'react-bootstrap';
 import ToggleDisplay from 'react-toggle-display';
 import firebase, { auth, provider } from '../config/fire.js';
@@ -65,7 +64,8 @@ class Show extends Component {
 
 
   }
-  login() {
+  login(e) {
+    e.preventDefault();
     auth.signInWithPopup(provider)
     .then((result) => {
       console.log("hey");
@@ -76,7 +76,9 @@ class Show extends Component {
   });
   }
 
-  logout() {
+  logout(e) {
+    e.preventDefault();
+    window.location.reload();
     auth.signOut()
       .then(() => {
         this.setState({
@@ -124,7 +126,7 @@ class Show extends Component {
       username: ''
     })
   }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////
 ///////////////////Mounting//////////////////////////////////////////////////////
   componentDidMount() {
     auth.onAuthStateChanged((user) => {

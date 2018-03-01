@@ -33,6 +33,7 @@ font-size: 40px;
 .addb{
   width:180px;
   height: 40px;
+
 }
 .modal-dialog {
   display: inline-block;
@@ -60,15 +61,13 @@ font-size: 40px;
   font-family: 'Abril Fatface', cursive;
   display: flex;
   align-items: flex-start;
-
-
   padding-right: 150px;
-
-
-
 }
 
+.booya{
+  font-size: 30px;
 
+}
 .But{
   /* padding-left: 10px; */
   display: flex;

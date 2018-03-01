@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { config } from './config/fire';
-import firebase from 'firebase/app';
-// import firebase, { auth, provider } from './firebase.js';
+// import firebase from 'firebase/app';
 import 'firebase/database';
 import './App.css';
 import Header from './static/header';
 import {Modal} from 'react-bootstrap';
+import firebase, { auth, provider } from './config/fire.js';
 
 
 
@@ -30,6 +30,8 @@ class App extends Component {
     this.updateThings = this.updateThings.bind(this);
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.login = this.login.bind(this); // <-- add this line
+    this.logout = this.logout.bind(this);
   }
 
 /////////Modal open/close //////////////////////////////////////////////////////
@@ -41,7 +43,28 @@ class App extends Component {
       showModal: id,
     });
   }
-
+  /////////Allows user to log in and out//////////
+    logout(e) {
+      e.preventDefault();
+      window.location.reload();
+      auth.signOut()
+        .then(() => {
+          this.setState({
+            user: null
+          });
+        });
+  }
+  login(e) {
+    e.preventDefault();
+    auth.signInWithPopup(provider)
+    .then((result) => {
+      console.log("hey, you're loggin!");
+  	const user = result.user;
+    this.setState({
+      user
+    });
+  });
+  }
 
 
 /////////////////// Handles typing and updating to firebase ///////////////////////////
@@ -87,7 +110,11 @@ moreDetails(){
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ///////////Mounting//////////////////////////////////////////////////////
 componentDidMount() {
-
+  auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      }
+    });
   const cookinRef = firebase.database().ref('recipes');
   cookinRef.on('value', (snapshot) => {
     let items = snapshot.val();
@@ -139,8 +166,11 @@ updateThings(cookin) {
         <header>
           <Header />
         </header>
+
         <div className="container">
           <section className='add-item'>
+              {this.state.user ?
+            <div>
             <form onSubmit={this.handleSubmit}>
             <br/>
               <h1 className="what">Create Your Recipe Here:</h1>
@@ -170,6 +200,10 @@ updateThings(cookin) {
               <br/>
               <button className="addb btn btn-success btn-lg">Add Recipe!</button>
             </form>
+            <button className="addb btn btn-primary btn-lg" onClick={this.moreDetails}>View All Recipes!</button>
+            </div>
+            : <p className="booya">You Must Be Logged In To Add a Recipe.</p>
+            }
               </section>
               <hr/>
               <br/>
@@ -227,7 +261,7 @@ updateThings(cookin) {
       </Modal>
 
 </div>
-            <button className="btn btn-primary btn-lg" onClick={this.moreDetails}>All Recipes!</button>
+
             <button className="btn btn-danger btn-lg" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
           </div>
 
