@@ -61,8 +61,6 @@ class Show extends Component {
         });
       });
 
-
-
   }
   login(e) {
     e.preventDefault();

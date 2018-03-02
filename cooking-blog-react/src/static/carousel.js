@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Slider from "react-slick";
+var Spinner = require('react-spinkit');
 
 
 
@@ -40,7 +41,7 @@ class Slick extends React.Component {
             <p className="clabel">Some More Cupcakes</p>
           </div>
           <div>
-            <img id="aleena" src={require('./img/aleenacake.JPG')} />
+            <img id="cupcake" src={require('./img/aleenacake.JPG')} />
             <p className="clabel">For My Best Friend</p>
           </div>
           <div>

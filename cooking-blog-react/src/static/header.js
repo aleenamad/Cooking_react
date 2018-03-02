@@ -1,12 +1,18 @@
 import firebase, { auth, provider } from '../config/fire.js';
 import React, { Component } from 'react';
 import './header.css';
+// import { Spinner } from '@blueprintjs/core';
+var Spinner = require('react-spinkit');
+
+
+
 
 class Header extends Component {
   constructor() {
     super();
     this.state = {
-      user: null // <-- add this line
+      user: null, // <-- add this line
+      loading: true
     }
     this.login = this.login.bind(this); // <-- add this line
     this.logout = this.logout.bind(this); // <-- add this line
@@ -40,21 +46,37 @@ login(e) {
 componentDidMount() {
   auth.onAuthStateChanged((user) => {
       if (user) {
-        this.setState({ user });
+        this.setState({
+          user,
+          loading: false,
+        })
       }
+      else {
+      this.setState({
+        loading: false
+      })
+    }
+
     });
 
 
 }
 /////////////////////////////////////////////////////////
   render() {
+
     return (
 
 <div className="header">
+
 <header className="App-header">
   <h1 className="App-title">Cookin' with Gonads</h1>
 
 </header>
+<div className="pacmen">
+<Spinner className="pac" name="pacman" />
+<h1 className="hey">Nadia's Cooking Blog Adventures</h1>
+<Spinner className="pac2" name="pacman" />
+</div>
 
 <div className="Navbar">
 

@@ -29,7 +29,8 @@ h1{
 
 .clabel{
   color: #8DB8E8;
-  padding-right: 100px;
+
+  text-align: left;
   font-size: 20px;
 
 }

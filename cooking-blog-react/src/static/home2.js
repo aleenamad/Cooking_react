@@ -14,7 +14,7 @@ class Home2 extends Component {
 
           <div className="theBody">
             <Header />
-              <h1 className="hey">Nadia's Cooking Blog Adventures</h1>
+              {/* <h1 className="hey">Nadia's Cooking Blog Adventures</h1> */}
               <br/>
               <br/>
 
