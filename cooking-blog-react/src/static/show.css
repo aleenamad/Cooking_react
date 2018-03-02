@@ -21,12 +21,15 @@ h1{
   height: 30px;
 
 }
-
+#aleena{
+  height: 400px;
+  width: 400px;
+}
 
 
 .clabel{
   color: #8DB8E8;
-  padding-right: 220px;
+  padding-right: 100px;
   font-size: 20px;
 
 }

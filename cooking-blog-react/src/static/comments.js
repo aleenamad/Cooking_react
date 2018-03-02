@@ -14,7 +14,7 @@ class Comment extends Component {
       comments: '',
       things: [],
       show: false,
-      user: null
+      user: null,
     }
 //// all the binding//////////////////
 
@@ -51,6 +51,7 @@ handleClick() {
     show: !this.state.show
   });
 }
+
 ////////////////////////////////////////////
 ///////// Update and remove Comments //////////////////////
   removeComment(wallId) {
@@ -124,6 +125,8 @@ return (
             <br/>
             <div className="containerComment">
               <li className="specificComment">{wall.comments}</li>
+              
+
               <button onClick={() => this.removeComment(wall.id)} className="remove btn-sm btn-danger">(X)</button>
               <button type="button" className="btn btn-success btn-sm" onClick={ ()=> this.handleIt(wall.id)}>Edit!</button>
               {/* Beginning of modal (has edit functionality) */}
