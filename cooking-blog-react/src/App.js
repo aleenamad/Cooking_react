@@ -219,6 +219,7 @@ updateThings(cookin) {
                           <h1 className="wassup">{cookin.title}</h1>
 
 <div className="But">
+  {this.state.user ?
   <div className="modal-container">
     <button type="button" className="btn btn-success btn-lg" onClick={ ()=> this.handleShow(cookin.id)}>Edit!</button>
     <Modal show={this.state.showModal === cookin.id} onHide={this.handleClose} bsSize="large">
@@ -262,6 +263,8 @@ updateThings(cookin) {
       </Modal>
 
 </div>
+: <button type="button" className="btn btn-success btn-lg">Must be Logged in to Edit!</button>
+}
 
             <button className="btn btn-danger btn-lg" id="but" onClick={() => this.removeThings(cookin.id)}>(X)</button>
           </div>
