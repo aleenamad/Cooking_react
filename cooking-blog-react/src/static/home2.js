@@ -11,6 +11,10 @@ class Home2 extends Component {
 
     return (
       <div className="App">
+        <header className="App-header">
+          <h1 className="App-title">Cookin' with Gonads</h1>
+
+        </header>
 
           <div className="theBody">
             <Header />

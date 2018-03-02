@@ -68,13 +68,13 @@ componentDidMount() {
 
 <div className="header">
 
-<header className="App-header">
+{/* <header className="App-header">
   <h1 className="App-title">Cookin' with Gonads</h1>
 
-</header>
+</header> */}
 <div className="pacmen">
 <Spinner className="pac" name="pacman" />
-<h1 className="hey">Nadia's Cooking Blog Adventures</h1>
+<h1 className="hey">Gonad's Cooking Blog Adventures</h1>
 <Spinner className="pac2" name="pacman" />
 </div>
 
